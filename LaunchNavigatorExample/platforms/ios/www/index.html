@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+	    <meta name="format-detection" content="telephone=no" />
+	    <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	</head>
+	<body>
+		<h1>LaunchNavigator Example</h1>
+		<div style="border: #000 solid 1px; padding 10px">
+			<p>Destination by Lat/Lon</p>
+			<div>
+				<label>Latitude: </label>
+				<input id="lat" value="50.620286295667356"/>
+			</div>
+			<div>
+				<label>Longitude: </label>
+				<input id="lon" value="-4.724767506122589"/>
+			</div>
+			<button id="goLatLon" style="padding: 10px;">Navigate</button>
+		</div>
+
+		<div style="border: #000 solid 1px; padding 10px; margin-top: 20px;">
+			<p>Destination by Place Name</p>
+			<div>
+				<label>Place Name: </label>
+				<input id="name" value="London"/>
+			</div>
+			<button id="goPlaceName" style="padding: 10px;">Navigate</button>
+		</div>
+
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+		<script type="text/javascript">
+			function onSuccess(){
+				alert("Successfully launched navigator");
+			}
+
+			function onError(errMsg){
+				alert("Error launching navigator: "+errMsg);
+			}
+
+			function init() {
+				$("#goLatLon").click(function(){
+					var lat = $("#lat").val();
+					var lon = $("#lon").val();
+
+					if(device.platform == "Android"){
+						launchnavigator.navigateByLatLon(lat, lon, onSuccess, onError);
+					}else if(device.platform == "iOS"){
+						var url = "maps:daddr="+lat+","+lon;
+						onSuccess();
+						window.location = url;
+					}else{
+						alert("Unknown platform");
+					}
+				});
+
+				$("#goPlaceName").click(function(){
+					var name = $("#name").val();
+
+					if(device.platform == "Android"){
+						launchnavigator.navigateByPlaceName(name, onSuccess, onError);
+					}else if(device.platform == "iOS"){
+						var url = "maps:q="+name;
+						onSuccess();
+						window.location = url;
+					}else{
+						alert("Unknown platform");
+					}
+				});
+			}
+			$(document).on("deviceready", init);
+		</script>
+
+	</body>
+</html>
