@@ -8,14 +8,19 @@
             "config.xml": {
                 "parents": {
                     "/*": [
-                        
+                        {
+                            "xml": "<feature name=\"LaunchNavigator\"><param name=\"ios-package\" value=\"LaunchNavigator\" /></feature>",
+                            "count": 1
+                        }
                     ]
                 }
             }
         }
     },
     "installed_plugins": {
-        
+        "uk.co.workingedge.phonegap.plugin.LaunchNavigator": {
+            "PACKAGE_NAME": "uk.co.workingedge.phonegap.example.launchnavigator"
+        }
     },
     "dependent_plugins": {}
 }

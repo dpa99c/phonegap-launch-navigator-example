@@ -45,30 +45,12 @@
 				$("#goLatLon").click(function(){
 					var lat = $("#lat").val();
 					var lon = $("#lon").val();
-
-					if(device.platform == "Android"){
-						launchnavigator.navigateByLatLon(lat, lon, onSuccess, onError);
-					}else if(device.platform == "iOS"){
-						var url = "maps:daddr="+lat+","+lon;
-						onSuccess();
-						window.location = url;
-					}else{
-						alert("Unknown platform");
-					}
+					launchnavigator.navigateByLatLon(lat, lon, onSuccess, onError);
 				});
 
 				$("#goPlaceName").click(function(){
 					var name = $("#name").val();
-
-					if(device.platform == "Android"){
-						launchnavigator.navigateByPlaceName(name, onSuccess, onError);
-					}else if(device.platform == "iOS"){
-						var url = "maps:q="+name;
-						onSuccess();
-						window.location = url;
-					}else{
-						alert("Unknown platform");
-					}
+					launchnavigator.navigateByPlaceName(name, onSuccess, onError);
 				});
 			}
 			$(document).on("deviceready", init);
