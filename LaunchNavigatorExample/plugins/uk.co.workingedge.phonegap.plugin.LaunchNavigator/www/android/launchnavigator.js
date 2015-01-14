@@ -1,4 +1,4 @@
-cordova.define("uk.co.workingedge.phonegap.plugin.LaunchNavigator.LaunchNavigator", function(require, exports, module) { /*
+/*
  * Copyright (c) 2014 Dave Alden  (http://github.com/dpa99c)
  * Copyright (c) 2014 Working Edge Ltd. (http://www.workingedge.co.uk)
  *  
@@ -26,22 +26,24 @@ cordova.define("uk.co.workingedge.phonegap.plugin.LaunchNavigator.LaunchNavigato
  */
     
 var launchnavigator = {};
+
+
     
-   /**
+/**
  * Opens navigator app to navigate to given lat/lon destination
  *
- * @param {Float} lat - destintation latitude as decimal number
- * @param {Float} lon - destintation longitude as decimal number 
+ * @param {Number} lat - destintation latitude as decimal number
+ * @param {Number} lon - destintation longitude as decimal number 
  * @param {Function} successCallback - The callback which will be called when plugin call is successful.
  * @param {Function} errorCallback - The callback which will be called when plugin encounters an error.
  * This callback function have a string param with the error.     
  */
 launchnavigator.navigateByLatLon = function(lat, lon, successCallback, errorCallback) {
     return cordova.exec(successCallback,
-                        errorCallback,
-                        'LaunchNavigator',
-                        'navigateByLatLon',
-                        [lat, lon]);
+        errorCallback,
+        'LaunchNavigator',
+        'navigateByLatLon',
+        [lat, lon]);
 };
 
 /**
@@ -54,10 +56,9 @@ launchnavigator.navigateByLatLon = function(lat, lon, successCallback, errorCall
  */
 launchnavigator.navigateByPlaceName = function(name, successCallback, errorCallback) {
     return cordova.exec(successCallback,
-                        errorCallback,
-                        'LaunchNavigator',
-                        'navigateByPlaceName',
-                        [name]);
+        errorCallback,
+        'LaunchNavigator',
+        'navigateByPlaceName',
+        [name]);
 };
 module.exports = launchnavigator;
-});

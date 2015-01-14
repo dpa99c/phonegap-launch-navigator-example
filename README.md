@@ -1,11 +1,7 @@
-Phonegap Launch Navigator Example
+Cordova/Phonegap Launch Navigator Example
 =================================
 
-This repo contains an example PhoneGap 3 project which illustrates how to launch the native navigation apps on Android and iOS to get driving directions to a desired location.
-
-The Android version uses a custom plugin - [Launch Navigator](https://github.com/dpa99c/phonegap-launch-navigator) - to launch Google Navigator.
-
-The iOS version doesn't need a plugin as Apple Maps on iOS can be launched using pure Javascript with the *magic* "maps" protocol.
+This repo contains an example PhoneGap 3 project which illustrates how to launch the native navigation app on Android and iOS to get driving directions to a desired location.
 
 
 ## Contents
@@ -43,9 +39,7 @@ To run the iOS project either build and run the project using the Phonegap CLI:
 $ phonegap run ios
 
 ```
-Note: For this to work, you need to build and install the Phonegap ios-deploy project first
-- Either clone and build from (https://github.com/phonegap/ios-deploy)
-- Or use npm: `npm install -g ios-deploy`
+Note: For this to work, you need to build and install the Phonegap ios-deploy project first: `npm install -g ios-deploy`
 
 Or import the project in Xcode and run it from there. The Xcode project is located here:
 ```

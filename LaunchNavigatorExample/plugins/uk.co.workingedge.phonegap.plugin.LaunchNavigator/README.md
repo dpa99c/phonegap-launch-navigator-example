@@ -1,16 +1,14 @@
-Launch Navigator Phonegap Plugin
+Launch Navigator Cordova/Phonegap Plugin
 =================================
 
-This PhoneGap Plugin provides a mechanism to launch the Google Navigator app on Android to get driving directions to a desired location. 
+This Cordova/PhoneGap Plugin provides a mechanism to launch the native navigation app on iOS (Apple Maps) and Android (Google Navigator) to get driving directions to a desired location. 
 
-An iOS version of this plugin is unnecessary as the Apple Maps app on iOS can be launched using pure Javascript using the *magic* "maps" protocol ([see below](#opening)).
-
-This is for Phonegap 3.x
+This is for Cordova/Phonegap 3+
 
 ## Contents
 
 * [Installing](#installing)
-* [Using the Android plugin](#using)
+* [Using the plugin](#using)
 * [Opening the native navigation app on iOS](#opening)
 * [Repository contents](#repository)
 * [License](#license)
@@ -24,39 +22,11 @@ Here's how to install it with the CLI:
 
 
 ```
+$ cordova plugin add https://github.com/dpa99c/phonegap-launch-navigator.git
+OR
 $ phonegap plugin add https://github.com/dpa99c/phonegap-launch-navigator.git
 ```
 
-## Manually
-
-
-1\. Get the source code
-```
-$ git clone https://github.com/dpa99c/phonegap-launch-navigator.git
-
-```
-
-2\. Add the feature to your `config.xml` in your project root directory:
-```xml
-<feature name="LaunchNavigator">
-  <param name="android-package" value="uk.co.workingedge.phonegap.plugin.LaunchNavigator" />
-</feature>
-```
-
-3\. Copy the Java source file from `src/android/uk/co/workingedge/phonegap/plugin/LaunchNavigator.java` into the Android source directory of your project 
-    
-    e.g. `$YOUR_PROJECT/platforms/android/src/uk/co/workingedge/phonegap/plugin/LaunchNavigator.java` (create the folders)
- 
-
-4\. Copy `www/launchnavigator.js` into your root www folder
-    
-    e.g. `$YOUR_PROJECT/www.launchnavigator.js`
-
-    
-5\. Include launchnavigator.js in index.html.  Ensure that launchnavigator.js is *after* cordova.js
-```
-<script type="text/javascript" src="launchnavigator.js"></script>        
-```
 
 # Using the plugin
 
@@ -64,7 +34,7 @@ The plugin has a two methods:
 
 ## navigateByLatLon
 
-Launches Google Navigator with the location specified by the supplied latitude and longitude as the destination. 
+Launches navigation app with the location specified by the supplied latitude and longitude as the destination. 
 
 ```    
 launchnavigator.navigateByLatLon(lat, lon, successFn, errorFn);
@@ -80,7 +50,7 @@ launchnavigator.navigateByLatLon(lat, lon, successFn, errorFn);
 
 ## navigateByPlaceName
 
-Launches Google Navigator with the location specified by a placename as the destination. 
+Launches navigator app with the location specified by a placename as the destination. 
 
 ```    
 launchnavigator.navigateByPlaceName(name, successFn, errorFn);
@@ -91,33 +61,6 @@ launchnavigator.navigateByPlaceName(name, successFn, errorFn);
 - name: destintation place name as a string, e.g. "London"
 - successFn: (Optional) The callback which will be called when plugin the call is successful.
 - errorFn: (Optional) The callback which will be called when plugin encounters an error. This callback function will be passed an error message string as the first parameter.
-
-
-# Opening the native navigation app on iOS
-
-There's no need for an iOS version of this plugin because the native navigation app on iOS can be launched using pure Javascript using the *magic* "maps" protocol:
-
-## Navigate to latitude/longitude
-```
-window.location = "maps:daddr=5.0349984534,-4.56463326";
-```
-
-## Navigate to place name
-```
-window.location = "maps:q=London";
-```
-
-# Detecting the platform
-
-You can detect whether the app is running on Android or iOS and therefore whether the plugin is required using the [device plugin](https://github.com/apache/cordova-plugin-device/blob/master/doc/index.md):
-
-    if(device.platform == "Android"){
-	  launchnavigator.navigateByLatLon(lat, lon, successFn, errorFn);
-    }else if(device.platform == "iOS"){
-	  window.location = "maps:daddr="+lat+","+lon;
-    }else{
-	  console.error("Unknown platform");
-    }
 
 
 License
