@@ -8,26 +8,61 @@
 	</head>
 	<body>
 		<h1>LaunchNavigator Example</h1>
-		<div style="border: #000 solid 1px; padding 10px">
-			<p>Destination by Lat/Lon</p>
+
+		<div style="border: #000 solid 1px; padding: 10px">
+			<p>Current location to destination by lat/lon</p>
 			<div>
-				<label>Latitude: </label>
-				<input id="lat" value="50.620286295667356"/>
+				<label>Destination Latitude: </label>
+				<input id="dlat1" value="50.279306"/>
 			</div>
 			<div>
-				<label>Longitude: </label>
-				<input id="lon" value="-4.724767506122589"/>
+				<label>Destination Longitude: </label>
+				<input id="dlon1" value="-5.163158"/>
 			</div>
-			<button id="goLatLon" style="padding: 10px;">Navigate</button>
+			<button id="go1" style="padding: 10px;">Navigate</button>
 		</div>
 
-		<div style="border: #000 solid 1px; padding 10px; margin-top: 20px;">
-			<p>Destination by Place Name</p>
+		<div style="border: #000 solid 1px; padding: 10px; margin-top: 20px;">
+			<p>Current location to destination by place name</p>
 			<div>
-				<label>Place Name: </label>
-				<input id="name" value="London"/>
+				<label>Destination Name: </label>
+				<input id="dname1" value="London, UK"/>
 			</div>
-			<button id="goPlaceName" style="padding: 10px;">Navigate</button>
+			<button id="go2" style="padding: 10px;">Navigate</button>
+		</div>
+
+		<div style="border: #000 solid 1px; padding: 10px">
+			<p>Start location to destination by lat/lon</p>
+			<div>
+				<label>Start Latitude: </label>
+				<input id="slat2" value="50.342847"/>
+			</div>
+			<div>
+				<label>Start Longitude: </label>
+				<input id="slon2" value="-4.749904"/>
+			</div>
+			<div>
+				<label>Destination Latitude: </label>
+				<input id="dlat2" value="50.279306"/>
+			</div>
+			<div>
+				<label>Destination Longitude: </label>
+				<input id="dlon2" value="-5.163158"/>
+			</div>
+			<button id="go3" style="padding: 10px;">Navigate</button>
+		</div>
+
+		<div style="border: #000 solid 1px; padding: 10px; margin-top: 20px;">
+			<p>Start location to destination by place name</p>
+			<div>
+				<label>Start Name: </label>
+				<input id="sname2" value="Manchester, UK"/>
+			</div>
+			<div>
+				<label>Destination Name: </label>
+				<input id="dname2" value="London, UK"/>
+			</div>
+			<button id="go4" style="padding: 10px;">Navigate</button>
 		</div>
 
 		<script type="text/javascript" src="cordova.js"></script>
@@ -42,15 +77,20 @@
 			}
 
 			function init() {
-				$("#goLatLon").click(function(){
-					var lat = $("#lat").val();
-					var lon = $("#lon").val();
-					launchnavigator.navigateByLatLon(lat, lon, onSuccess, onError);
+				$("#go1").click(function(){
+					launchnavigator.navigate([$("#dlat1").val(),$("#dlon1").val()], null, onSuccess, onError);
 				});
 
-				$("#goPlaceName").click(function(){
-					var name = $("#name").val();
-					launchnavigator.navigateByPlaceName(name, onSuccess, onError);
+				$("#go2").click(function(){
+					launchnavigator.navigate($("#dname1").val(), null, onSuccess, onError);
+				});
+
+				$("#go3").click(function(){
+					launchnavigator.navigate([$("#dlat2").val(),$("#dlon2").val()], [$("#slat2").val(),$("#slon2").val()], onSuccess, onError);
+				});
+
+				$("#go4").click(function(){
+					launchnavigator.navigate($("#dname2").val(), $("#sname2").val(), onSuccess, onError);
 				});
 			}
 			$(document).on("deviceready", init);
