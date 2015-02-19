@@ -1,13 +1,14 @@
 Cordova/Phonegap Launch Navigator Example
 =================================
 
-This repo contains an example PhoneGap 3 project which illustrates how to use the [Launch Navigator plugin](https://github.com/dpa99c/phonegap-launch-navigator) to launch the native navigation app on iOS (Apple Maps) and Android (Google Navigator to get driving directions to a desired location.
+This repo contains an example PhoneGap 3 project which illustrates how to use the [Launch Navigator plugin](https://github.com/dpa99c/phonegap-launch-navigator) to launch the native navigation app on iOS (Apple Maps), Android (Google Navigator), and Windows (Bing Maps) to get driving directions to a desired location.
 
 
 ## Contents
 * [Downloading](#downloading)
 * [Android](#android)
 * [iOS](#ios)
+* [Windows](#windows)
 * [License](#license)
  
 # Downloading
@@ -46,6 +47,24 @@ Or import the project in Xcode and run it from there. The Xcode project is locat
 LaunchNavigatorExample/platforms/ios
 
 ```
+
+
+
+# Windows
+
+To run the Windows project either build and run the project using the Cordova CLI (PhoneGap should work too):
+```
+$ cordova run windows
+
+```
+Note: For this to work, you need at least Visual Studio 2013 Community:  http://www.visualstudio.com/
+
+Or import the project in Visual Studio 2013 and run it from there. The Visual Studio 2013 project is located here:
+```
+LaunchNavigatorExample/platforms/windows
+
+```
+
 
 License
 ================
