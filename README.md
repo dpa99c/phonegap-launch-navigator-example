@@ -57,11 +57,11 @@ To run the Windows project either build and run the project using the Cordova CL
 $ cordova run windows
 
 ```
-Note: For this to work, you need at least Visual Studio 2013 Community:  http://www.visualstudio.com/
+Note: This will run the app in your Windows 8.1 PC. For this to work, you need at least Visual Studio 2013 Community:  http://www.visualstudio.com/
 
-Or import the project in Visual Studio 2013 and run it from there. The Visual Studio 2013 project is located here:
+Or import the project in Visual Studio 2013 and run it from there. Within Visual Studio, you will be able to choose between Windows Phone 8.1 and Windows 8.1 (PC). The Visual Studio 2013 project is located here:
 ```
-LaunchNavigatorExample/platforms/windows
+LaunchNavigatorExample/platforms/windows/CordovaApp.sln
 
 ```
 
