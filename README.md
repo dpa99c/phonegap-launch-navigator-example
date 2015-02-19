@@ -9,60 +9,55 @@ This repo contains an example PhoneGap 3 project which illustrates how to use th
 * [Android](#android)
 * [iOS](#ios)
 * [Windows](#windows)
+* [Credits](#credits)
 * [License](#license)
  
 # Downloading
 
 To download the example project, clone it using git:
-```
-$ git clone https://github.com/dpa99c/phonegap-launch-navigator-example.git
 
-```
+    $ git clone https://github.com/dpa99c/phonegap-launch-navigator-example.git
+
 
 # Android
 
 To run the Android project either build and run the project using the Phonegap CLI:
-```
-$ phonegap run android
 
-```
+    $ phonegap run android
+
 
 Or import the project in Eclipse and run it from there. The Eclipse project is located here:
-```
-LaunchNavigatorExample/platforms/android
 
-```
+    LaunchNavigatorExample/platforms/android
+
 
 # iOS
 
 To run the iOS project either build and run the project using the Phonegap CLI:
-```
-$ phonegap run ios
 
-```
+    $ phonegap run ios
+
 Note: For this to work, you need to build and install the Phonegap ios-deploy project first: `npm install -g ios-deploy`
 
 Or import the project in Xcode and run it from there. The Xcode project is located here:
-```
-LaunchNavigatorExample/platforms/ios
 
-```
+    LaunchNavigatorExample/platforms/ios
 
 # Windows
 
 To run the Windows project either build and run the project using the Cordova CLI (PhoneGap should work too):
-```
-$ cordova run windows
 
-```
+    $ cordova run windows
+
 Note: This will run the app in your Windows 8.1 PC. For this to work, you need at least Visual Studio 2013 Community: http://www.visualstudio.com
 
 Or import the project in Visual Studio 2013 and run it from there. Within Visual Studio, you will be able to choose between Windows Phone 8.1 and Windows 8.1 (PC). The Visual Studio 2013 project is located here:
-```
-LaunchNavigatorExample/platforms/windows/CordovaApp.sln
 
-```
+    LaunchNavigatorExample/platforms/windows/CordovaApp.sln
 
+# Credits
+
+Thanks to [opadro](https://github.com/opadro) for Windows platform example
 
 License
 ================
