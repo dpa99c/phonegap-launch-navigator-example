@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -68,24 +68,12 @@
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
 		<script type="text/javascript">
-                    
-                    function alert2(msg) {
-                       //alert() is not available in the Windows platform, use org.apache.cordova.dialogs i.e.
-                       //Instead of this if/else code, you might want to use the org.apache.cordova.dialogs plugin and call instead navigator.notification.alert in all platforms.
-                        if ('MSApp' in window) {
-                            console.log(msg);
-                        }
-                        else {
-                            alert(msg);
-                        }
-                    }
-
 			function onSuccess(){
-				alert2("Successfully launched navigator");
+				alert("Successfully launched navigator");
 			}
 
 			function onError(errMsg){
-				alert2("Error launching navigator: "+errMsg);
+				alert("Error launching navigator: "+errMsg);
 			}
 
 			function init() {
