@@ -11,7 +11,7 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "uk.co.workingedge.phonegap.plugin.LaunchNavigator": "2.2.0"
+    "uk.co.workingedge.phonegap.plugin.LaunchNavigator": "2.6.0"
 }
 // BOTTOM OF METADATA
 });

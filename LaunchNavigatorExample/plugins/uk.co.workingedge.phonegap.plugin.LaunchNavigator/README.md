@@ -1,44 +1,55 @@
 Launch Navigator Cordova/Phonegap Plugin
 =================================
 
-This Cordova/PhoneGap Plugin provides a mechanism to launch the native navigation app on iOS (Apple Maps), Android (Google Navigator), and Windows (Bing Maps) to get driving directions to a desired location. 
+This Cordova/Phonegap plugin can be used to navigate to a destination using the native navigation app on:
 
-This is for Cordova/Phonegap 3+
+- Android: Google Navigator
+- iOS: Apple Maps/Google Maps<sup>[[1]](#fn1)</sup>
+- Windows Phone: Bing Maps
+
+<sub><a id="fn1">[1]</a>: on iOS, you can choose to [prefer Google Maps](#ios) over Apple Maps if it's installed on the user's device; if not, Apple Maps will be used instead.</sub>
 
 ## Contents
 
 * [Installing](#installing)
 * [Using the plugin](#using-the-plugin)
-** [Example usage](#example-usage)
-** [Deprecate functions](#deprecated-functions)
+    * [Example usage](#example-usage)
+        * [Example project](#example-project)
+    * [Deprecated functions](#deprecated-functions)
 * [Caveats](#caveats)
-** [Windows](#windows)
-** [Android](#android)
+    * [Windows](#windows)
+    * [iOS](#ios)
+* [Reporting issues](#reporting-issues)
+* [Credits](#credits)
 * [License](#license)
  
 # Installing
 
 ## Automatically with CLI / Plugman
+
 Launch Navigator can be installed with [Cordova Plugman](https://github.com/apache/cordova-plugman) and the [PhoneGap CLI](http://docs.phonegap.com/en/edge/guide_cli_index.md.html).
 
 Here's how to install it with the CLI:
 
 
-```
-$ cordova plugin add https://github.com/dpa99c/phonegap-launch-navigator.git
+    $ cordova plugin add uk.co.workingedge.phonegap.plugin.launchnavigator
+
 OR
-$ phonegap plugin add https://github.com/dpa99c/phonegap-launch-navigator.git
-```
+
+    $ phonegap plugin add uk.co.workingedge.phonegap.plugin.launchnavigator
+
+## PhoneGap Build
+
+Add the following xml to your config.xml to use the latest version of this plugin from on [plugins.cordova.io](http://plugins.cordova.io):
+
+    <gap:plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="plugins.cordova.io" />
 
 
 # Using the plugin
 
 The plugin has single function which launches the navigation app with the location specified as the destination.
 
-
-```
-launchnavigator.navigate(destination, start, successCallback, errorCallback);
-```
+    launchnavigator.navigate(destination, start, successCallback, errorCallback, options);
 
 ## Parameters
 
@@ -46,54 +57,56 @@ launchnavigator.navigate(destination, start, successCallback, errorCallback);
 - start (optional): start location to use for navigation, either as a String specifying the place name, or as an Array specifying latitude/longitude. If not specified, the current device location will be used.
 - successFn (optional): Called when plugin the call is successful.
 - errorFn (optional): Called when plugin encounters an error. This callback function will be passed an error message string as the first parameter.
+- options (optional): Platform-specific options. See [Caveats](#caveats) for details on each platform.
 
 ## Example usage
 
 Navigate by place name:
 
-```
-launchnavigator.navigate(
-  "London, UK", 
-  "Manchester, UK", 
-  function(){
-      alert("Plugin success"):
-  }, 
-  function(error){
-      alert("Plugin error: "+ error):
-  });
-```
+    launchnavigator.navigate(
+      "London, UK",
+      "Manchester, UK",
+      function(){
+          alert("Plugin success");
+      },
+      function(error){
+          alert("Plugin error: "+ error);
+      });
 
 Navigate by latitude/longitude:
 
-```
-launchnavigator.navigate(
-  [50.279306, -5.163158],
-  [50.342847, -4.749904],
-  function(){
-      alert("Plugin success"):
-  }, 
-  function(error){
-      alert("Plugin error: "+ error):
-  });
-```
+    launchnavigator.navigate(
+      [50.279306, -5.163158],
+      [50.342847, -4.749904],
+      function(){
+          alert("Plugin success");
+      },
+      function(error){
+          alert("Plugin error: "+ error);
+      });
 
 Navigate from current location:
 
-```
-launchnavigator.navigate(
-  "London, UK", 
-  null, 
-  function(){
-      alert("Plugin success"):
-  }, 
-  function(error){
-      alert("Plugin error: "+ error):
-  });
-```
+    launchnavigator.navigate(
+      "London, UK",
+      null,
+      function(){
+          alert("Plugin success");
+      },
+      function(error){
+          alert("Plugin error: "+ error);
+      });
+
+### Example project
+
+https://github.com/dpa99c/phonegap-launch-navigator-example
+
+The above link is to an example Cordova 3 project which demonstrates usage of this plugin.
+The examples currently run on Android, iOS, Windows Phone 8.1, and Windows 8.1 (PC) platforms.
 
 ## Deprecated functions
 
-The old version of this plugin provided two separate functions in order to specify the destination either by name: `navigateByPlaceName` or by lat/lon: `navigateByLatLon'
+The old version of this plugin provided two separate functions in order to specify the destination either by name: `navigateByPlaceName` or by lat/lon: `navigateByLatLon`
 These functions are still present in the plugin for backward compatibility, but are deprecated in favour of using the `navigate()` and may be removed in a future version of the plugin.
 
 
@@ -101,14 +114,73 @@ These functions are still present in the plugin for backward compatibility, but 
 
 ## Windows
 
-- The plugin is compatible with Windows 8.1 on any PC and on Windows Phone 8.1 using the Universal app generated by Cordova.
+- The plugin is compatible with Windows 8.1 on any PC and on Windows Phone 8.1 using the Universal .Net project generated by Cordova: `cordova platform add windows`
 
-- Bing Maps will require the user to press the enter key to initiate navigation if you don't provide the start location. The Geolocation plugin can be used to find the current location of the user: `org.apache.cordova.geolocation`.
+- Bing Maps will require the user to press the enter key to initiate navigation if you don't provide the start location.
 
-## Android
+- If the start location is not passed via the plugin, Bing Maps does not automatically use the current location of the user (as Android and iOS do).
+However, the [Geolocation plugin](https://github.com/apache/cordova-plugin-geolocation) can be used to find the current location of the user, for example:
 
-- It's not possible to provide a custom start location when launching the Google Navigator app - the user's current location is always used. Therefore, if you specify a start location when calling the plugin on Android, the plugin will launch the Google Maps app which does support a custom start location.
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          launchnavigator.navigate(
+            "London, UK",
+            [pos.coords.latitude, pos.coords.longitude],
+            function(){
+                alert("Plugin success");
+            },
+            function(error){
+                alert("Plugin error: "+ error);
+            });
+        });
 
+## iOS
+
+- The iOS version of the plugin supports the following platform-specific options:
+  - {Boolean} preferGoogleMaps - if true, plugin will attempt to launch Google Maps instead of Apple Maps. If Google Maps is not available, it will fall back to Apple Maps.
+  - {Boolean} enableDebug - if true, debug log output will be generated by the plugin
+
+For example:
+
+    launchnavigator.navigate(
+      "London, UK",
+      "Manchester, UK",
+      function(){
+        alert("Plugin success");
+      },
+      function(error){
+        alert("Plugin error: "+ error);
+      },
+      {
+        preferGoogleMaps: true,
+        enableDebug: true
+    });
+
+# Reporting issues
+
+Before reporting issues with this plugin, please first do the following:
+
+- Check the existing lists of [open issues](https://github.com/dpa99c/phonegap-launch-navigator/issues) and [closed issues](https://github.com/dpa99c/phonegap-launch-navigator/issues?q=is%3Aissue+is%3Aclosed)
+- Check your target country is supported for turn-by-turn by the native navigation app
+  - [Apple Maps country list for iOS](https://www.apple.com/ios/feature-availability/#maps-turn-by-turn-navigation)
+  - [Google Maps country list for Android](https://support.google.com/gmm/answer/3137767?hl=en-GB)
+  - [Bing Maps country list for Windows Phone](https://msdn.microsoft.com/en-us/library/dd435699.aspx)
+- If possible, test using the [example project](https://github.com/dpa99c/phonegap-launch-navigator-example) to eliminate the possibility of a bug in your code rather than the plugin.
+
+
+When reporting issues, please give the following information:
+
+- A clear description of the problem
+
+- OS version(s) and device (or emulator) model(s) on which the problem was observed
+
+- Code example of calling the plugin which results in the observed issue
+
+- Example parameters (locations or place names) which results in the observed issue
+
+
+# Credits
+
+Thanks to [opadro](https://github.com/opadro) for Windows implementation
 
 License
 ================
