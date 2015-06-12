@@ -6,10 +6,12 @@ This repo contains an example PhoneGap 3 project which illustrates how to use th
 
 ## Contents
 * [Downloading](#downloading)
-* [Android](#android)
-* [iOS](#ios)
-* [Windows](#windows)
-* [WP8](#wp8)
+* [Building](#building)
+    * [Android](#android)
+    * [iOS](#ios)
+    * [Windows](#windows)
+    * [WP8](#wp8)
+* [Running](#running)
 * [Credits](#credits)
 * [License](#license)
  
@@ -19,8 +21,11 @@ To download the example project, clone it using git:
 
     $ git clone https://github.com/dpa99c/phonegap-launch-navigator-example.git
 
+# Building
 
-# Android
+The project can be built for running on your local machine as follows:
+
+## Android
 
 To run the Android project either build and run the project using the Phonegap CLI:
 
@@ -32,7 +37,7 @@ Or import the project in Eclipse and run it from there. The Eclipse project is l
     LaunchNavigatorExample/platforms/android
 
 
-# iOS
+## iOS
 
 To run the iOS project either build and run the project using the Phonegap CLI:
 
@@ -44,7 +49,7 @@ Or import the project in Xcode and run it from there. The Xcode project is locat
 
     LaunchNavigatorExample/platforms/ios
 
-# Windows
+## Windows
 
 To run the Windows project either build and run the project using the Cordova CLI (PhoneGap should work too):
 
@@ -56,7 +61,7 @@ Or import the project in Visual Studio 2013 and run it from there. Within Visual
 
     LaunchNavigatorExample/platforms/windows/CordovaApp.sln
 
-# WP8
+## WP8
 
 To run the Windows Phone 8.0 project either build and run the project using the Cordova CLI (PhoneGap should work too):
 
@@ -67,6 +72,12 @@ Note: This will run the app in your Windows 8.0 or 8.1 phone. For this to work, 
 Or import the project in Visual Studio 2013 and run it from there.
 
 	LaunchNavigatorExample/platforms/wp8/LaunchNavigatorExample.sln
+
+# Running
+If you're unable to build the project or just want to try it out, here is the project as a pre-built app:
+
+- [Android APK (debug unsigned)](build/LaunchNavigatorExample.apk)
+- [iOS IPA (signed for adhoc distribution)](build/LaunchNavigatorExample.ipa)
 
 # Credits
 
