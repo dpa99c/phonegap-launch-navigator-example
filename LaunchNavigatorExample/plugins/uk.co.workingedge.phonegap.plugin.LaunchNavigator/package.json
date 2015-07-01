@@ -1,25 +1,34 @@
 {
-    "version": "2.6.0",
+    "version": "2.7.0",
     "name": "uk.co.workingedge.phonegap.plugin.launchnavigator",
     "cordova_name": "Launch Navigator",
     "description": "Cordova/Phonegap plugin to navigate to a destination using the native navigation app on Android (Google Navigator), iOS (Apple Maps/Google Maps), and Windows Phone (Bing Maps).",
+    "author": "Dave Alden",
     "license": "MIT",
-    "repo": "https://github.com/dpa99c/phonegap-launch-navigator.git",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dpa99c/phonegap-launch-navigator.git"
+    },
+    "cordova": {
+        "id": "uk.co.workingedge.phonegap.plugin.launchnavigator",
+        "platforms": [
+          "android",
+          "ios",
+          "wp8",
+          "windows"
+        ]
+    },
     "issue": "https://github.com/dpa99c/phonegap-launch-navigator/issues",
     "keywords": [
+        "ecosystem:cordova",
         "cordova",
         "phonegap",
         "ios",
         "android",
         "windows",
+        "wp8",
         "navigation",
         "navigator"
-    ],
-    "platforms": [
-        "android",
-        "ios",
-        "windows",
-        "wp8"
     ],
     "engines": [
         {

@@ -4,7 +4,7 @@
     <Languages xmlns="">
         <Language code="en-US" />
     </Languages>
-    <App Author="LaunchNavigatorExample author" BitsPerPixel="32" Description="Apache Cordova for Windows Phone" Genre="apps.normal" ProductID="{8412da00-ffbc-11e4-84b9-55b8dde2e91c}" Publisher="LaunchNavigatorExample" PublisherID="{db093ed5-53b1-45f7-af72-751e8f36ab80}" RuntimeType="Silverlight" Title="LaunchNavigatorExample" Version="1.0.0" xmlns="">
+    <App Author="Dave Alden" BitsPerPixel="32" Description="Sample application that illustrates how to use the LaunchNavigator plugin" Genre="apps.normal" ProductID="{8412da00-ffbc-11e4-84b9-55b8dde2e91c}" Publisher="Dave Alden" PublisherID="{db093ed5-53b1-45f7-af72-751e8f36ab80}" RuntimeType="Silverlight" Title="LaunchNavigatorExample" Version="1.0.0" xmlns="">
         <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
         <Capabilities>
             <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
