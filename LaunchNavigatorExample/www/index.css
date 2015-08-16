@@ -1,0 +1,35 @@
+.example{
+    border: #000 solid 1px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.first.example{
+    margin-top: 0;
+}
+
+.example button{
+    padding: 10px;
+}
+
+.windows-only,
+.ios-only,
+.android-only{
+    display: none;
+}
+
+body.windows .windows-only,
+body.ios .ios-only,
+body.android .android-only{
+    display: block !important;
+}
+
+select.modes option{
+    display: none;
+}
+
+body.windows select.modes option.windows,
+body.ios select.modes option.ios,
+body.android select.modes option.android{
+    display: block !important;
+}
