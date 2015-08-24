@@ -10,7 +10,16 @@
 	<body>
 		<h1>LaunchNavigator Example</h1>
 
-		<div id="all-1" class="first example">
+		<!-- iOS Only -->
+		<div id="prefer-google-maps" class="ios-only example">
+			<div>
+				<label>Prefer Google Maps? (iOS only)</label>
+				<input type="checkbox" />
+			</div>
+		</div>
+
+		<!-- All Platforms -->
+		<div id="all-1" class="example">
 			<p>Current location to destination by lat/lon</p>
 			<div>
 				<label>Destination Latitude: </label>
@@ -84,20 +93,6 @@
 					<option class="android ios" value="bicycling">bicycling</option>
 					<option class="android windows ios" value="transit">transit</option>
 				</select>
-			</div>
-			<button>Navigate</button>
-		</div>
-
-		<!-- iOS Only -->
-		<div id="ios-1" class="ios-only example">
-			<p>Prefer Google Maps (iOS only)</p>
-			<div>
-				<label>Start Name: </label>
-				<input class="sname" value="Manchester, UK"/>
-			</div>
-			<div>
-				<label>Destination Name: </label>
-				<input class="dname" value="London, UK"/>
 			</div>
 			<button>Navigate</button>
 		</div>

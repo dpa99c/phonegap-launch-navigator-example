@@ -17,6 +17,13 @@ function onError(errMsg){
     alert2("Error launching navigator: "+errMsg);
 }
 
+function extendDefaultOptions(opts){
+    return $.extend({
+        preferGoogleMaps: $('#prefer-google-maps input').prop('checked'),
+        enableDebug: true
+    }, opts);
+}
+
 function init() {
     var platform = device.platform.toLowerCase();
     if(platform.match(/win/)){
@@ -25,33 +32,30 @@ function init() {
     $('body').addClass(platform);
 
     $("#all-1 button").click(function(){
-        launchnavigator.navigate([$("#all-1 .dlat").val(),$("#all-1 .dlon").val()], null, onSuccess, onError);
+        launchnavigator.navigate([$("#all-1 .dlat").val(),$("#all-1 .dlon").val()], null, onSuccess, onError, extendDefaultOptions());
     });
 
     $("#all-2 button").click(function(){
-        launchnavigator.navigate($("#all-2 .dname").val(), null, onSuccess, onError);
+        launchnavigator.navigate($("#all-2 .dname").val(), null, onSuccess, onError, extendDefaultOptions());
     });
 
     $("#all-3 button").click(function(){
-        launchnavigator.navigate([$("#all-3 .dlat").val(),$("#all-3 .dlon").val()], [$("#all-3 .slat").val(),$("#all-3 .slon").val()], onSuccess, onError);
+        launchnavigator.navigate([$("#all-3 .dlat").val(),$("#all-3 .dlon").val()], [$("#all-3 .slat").val(),$("#all-3 .slon").val()], onSuccess, onError, extendDefaultOptions());
     });
 
     $("#all-4 button").click(function(){
-        launchnavigator.navigate($("#all-4 .dname").val(), $("#all-4 .sname").val(), onSuccess, onError);
+        launchnavigator.navigate($("#all-4 .dname").val(), $("#all-4 .sname").val(), onSuccess, onError, extendDefaultOptions());
     });
 
     $("#all-5 button").click(function(){
-        launchnavigator.navigate($("#all-5 .dname").val(), $("#all-5 .sname").val(), onSuccess, onError, {
+        launchnavigator.navigate($("#all-5 .dname").val(), $("#all-5 .sname").val(), onSuccess, onError, extendDefaultOptions({
             transportMode: $("#all-5 select.modes").val()
-        });
+        }));
     });
 
     // iOS-only
     $("#ios-1 button").click(function(){
-        launchnavigator.navigate($("#ios-1 .dname").val(), $("#ios-1 .sname").val(), onSuccess, onError, {
-            preferGoogleMaps: true,
-            enableDebug: true
-        });
+        launchnavigator.navigate($("#ios-1 .dname").val(), $("#ios-1 .sname").val(), onSuccess, onError, extendDefaultOptions());
     });
 }
 $(document).on("deviceready", init);
