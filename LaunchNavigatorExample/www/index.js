@@ -26,16 +26,23 @@ function onError(errMsg){
 }
 
 function extendDefaultOptions(opts){
-    return $.extend({
-        preferGoogleMaps: $('#prefer-google-maps input').prop('checked'),
-        enableDebug: true
-    }, opts);
+    var defaults = {};
+    if(platform === "ios"){
+        defaults.preferGoogleMaps = $('body.ios #prefer-google-maps input').prop('checked');
+        defaults.enableDebug = true;
+    }else if(platform === "android"){
+        defaults.navigationMode = $('body.android #navigation-mode select').val();
+    }
+
+    return $.extend(defaults, opts);
 }
 
 function setTransportModes(){
     var modes;
+    var $select = $('select.modes');
     switch(platform){
         case "android":
+            $select.prop('disabled', $('body.android #navigation-mode select').val() === "maps");
             modes = transportModes["android"];
             break;
         case "windows":
@@ -49,7 +56,6 @@ function setTransportModes(){
             }
             break;
     }
-    var $select = $('select.modes');
     $select.empty();
     for(var i=0; i<modes.length; i++){
         var mode = modes[i];
@@ -86,7 +92,12 @@ function init() {
         }));
     });
 
-    $('#prefer-google-maps input').change(setTransportModes);
+    $('body.ios #prefer-google-maps input').change(setTransportModes);
+
+    $('body.android #navigation-mode select').change(function(){
+        $('input.slat, input.slon, input.sname').prop('disabled', $(this).val() === "turn-by-turn");
+        setTransportModes();
+    });
     setTransportModes();
 
 }
