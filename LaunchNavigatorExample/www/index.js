@@ -53,9 +53,12 @@ function init() {
         }));
     });
 
-    // iOS-only
-    $("#ios-1 button").click(function(){
-        launchnavigator.navigate($("#ios-1 .dname").val(), $("#ios-1 .sname").val(), onSuccess, onError, extendDefaultOptions());
-    });
+    // iOS
+    var onPreferGoogleMaps = function(){
+        $('body').toggleClass('prefer-google', $('#prefer-google-maps input').prop('checked'));
+    };
+    $('#prefer-google-maps input').change(onPreferGoogleMaps);
+    onPreferGoogleMaps();
+
 }
 $(document).on("deviceready", init);
