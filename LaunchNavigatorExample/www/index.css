@@ -19,15 +19,3 @@ body.ios .ios-only,
 body.android .android-only{
     display: block !important;
 }
-
-select.modes option,
-body.ios.prefer-google select.modes option.ios-apple-maps,{
-    display: none;
-}
-
-body.windows select.modes option.windows,
-body.ios select.modes option.ios-apple-maps,
-body.ios.prefer-google select.modes option.ios-google-maps,
-body.android select.modes option.android{
-    display: block;
-}

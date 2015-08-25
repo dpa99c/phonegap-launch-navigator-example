@@ -1,3 +1,11 @@
+var platform;
+var transportModes = {
+    "android": ["driving", "walking", "transit", "bicycling"],
+    "windows": ["driving", "walking", "transit"],
+    "ios-google-maps": ["driving", "walking", "transit", "bicycling"],
+    "ios-apple-maps": ["driving", "walking"]
+};
+
 function alert2(msg) {
     //alert() is not available in the Windows platform, use org.apache.cordova.dialogs i.e.
     //Instead of this if/else code, you might want to use the org.apache.cordova.dialogs plugin and call instead navigator.notification.alert in all platforms.
@@ -24,8 +32,33 @@ function extendDefaultOptions(opts){
     }, opts);
 }
 
+function setTransportModes(){
+    var modes;
+    switch(platform){
+        case "android":
+            modes = transportModes["android"];
+            break;
+        case "windows":
+            modes = transportModes["windows"];
+            break;
+        case "ios":
+            if($('#prefer-google-maps input').prop('checked')){
+                modes = transportModes["ios-google-maps"];
+            }else{
+                modes = transportModes["ios-apple-maps"];
+            }
+            break;
+    }
+    var $select = $('select.modes');
+    $select.empty();
+    for(var i=0; i<modes.length; i++){
+        var mode = modes[i];
+        $select.append($('<option value="'+mode+'">'+mode+'</option>'));
+    }
+}
+
 function init() {
-    var platform = device.platform.toLowerCase();
+    platform = device.platform.toLowerCase();
     if(platform.match(/win/)){
         platform = "windows";
     }
@@ -53,12 +86,8 @@ function init() {
         }));
     });
 
-    // iOS
-    var onPreferGoogleMaps = function(){
-        $('body').toggleClass('prefer-google', $('#prefer-google-maps input').prop('checked'));
-    };
-    $('#prefer-google-maps input').change(onPreferGoogleMaps);
-    onPreferGoogleMaps();
+    $('#prefer-google-maps input').change(setTransportModes);
+    setTransportModes();
 
 }
 $(document).on("deviceready", init);
