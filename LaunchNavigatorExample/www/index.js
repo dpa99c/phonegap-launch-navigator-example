@@ -64,6 +64,7 @@ function setTransportModes(){
 }
 
 function init() {
+
     platform = device.platform.toLowerCase();
     if(platform.match(/win/)){
         platform = "windows";
@@ -97,6 +98,7 @@ function init() {
     if(platform === "ios"){
         // Check if Google Maps is available on iOS device
         launchnavigator.isGoogleMapsAvailable(function(available){
+            console.log("Google Maps IS"+(available ? " " : " NOT ") + "available");
             $('#prefer-google-maps input').prop('disabled', !available);
         });
     }
