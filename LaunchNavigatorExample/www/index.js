@@ -94,6 +94,13 @@ function init() {
 
     $('body.ios #prefer-google-maps input').change(setTransportModes);
 
+    if(platform === "ios"){
+        // Check if Google Maps is available on iOS device
+        launchnavigator.isGoogleMapsAvailable(function(available){
+            $('#prefer-google-maps input').prop('disabled', !available);
+        });
+    }
+
     $('body.android #navigation-mode select').change(function(){
         $('input.slat, input.slon, input.sname').prop('disabled', $(this).val() === "turn-by-turn");
         setTransportModes();
