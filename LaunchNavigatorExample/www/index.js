@@ -1,111 +1,161 @@
-var platform;
-var transportModes = {
-    "android": ["driving", "walking", "transit", "bicycling"],
-    "windows": ["driving", "walking", "transit"],
-    "ios-google-maps": ["driving", "walking", "transit", "bicycling"],
-    "ios-apple-maps": ["driving", "walking"]
-};
+var ln, platform,
+    $form, $select_app, $select_transport_mode, $select_launch_mode,
+    $select_dest_type, $select_dest, $input_dest_name,
+    $select_start_type, $select_start, $input_start_name;
 
-function alert2(msg) {
-    //alert() is not available in the Windows platform, use org.apache.cordova.dialogs i.e.
-    //Instead of this if/else code, you might want to use the org.apache.cordova.dialogs plugin and call instead navigator.notification.alert in all platforms.
-    if ('MSApp' in window) {
-        console.log(msg);
-    }
-    else {
-        alert(msg);
-    }
-}
+var coordsRegExp = /^[\d.]+,[\d.]+$/;
+
 
 function onSuccess(){
-    alert2("Successfully launched navigator");
+    navigator.notification.alert("Successfully launched navigator");
 }
 
 function onError(errMsg){
-    alert2("Error launching navigator: "+errMsg);
+    navigator.notification.alert("Error launching navigator: "+errMsg);
 }
 
-function extendDefaultOptions(opts){
-    var defaults = {};
-    if(platform === "ios"){
-        defaults.preferGoogleMaps = $('body.ios #prefer-google-maps input').prop('checked');
-        defaults.enableDebug = true;
-    }else if(platform === "android"){
-        defaults.navigationMode = $('body.android #navigation-mode select').val();
+function updateUI(){
+    var app = $select_app.val(),
+        launchMode = $select_launch_mode.val(),
+        startType = $select_start_type.val(),
+        destType = $select_dest_type.val();
+
+    // Set transport modes
+    $select_transport_mode.empty();
+    if(ln.supportsTransportMode(app, platform, launchMode)){
+        $select_transport_mode.prop('disabled', false);
+        $('#transport-mode').toggleClass('disabled', false);
+        var transportModes = ln.getTransportModes(app, platform, launchMode);
+        transportModes.forEach(function(transportMode){
+            $select_transport_mode.append($('<option value="'+transportMode+'">'+transportMode+'</option>'));
+        });
+    }else{
+        $select_transport_mode.prop('disabled', true);
+        $('#transport-mode').toggleClass('disabled', true);
     }
 
-    return $.extend(defaults, opts);
+    // set launch mode availability
+    $select_launch_mode.prop('disabled', !ln.supportsLaunchMode(app, platform));
+    $('#launch-mode').toggleClass('disabled', !ln.supportsLaunchMode(app, platform));
+
+    var supportsStart = ln.supportsStart(app, platform);
+    $('#start').toggleClass('disabled', !supportsStart);
+    $select_start.prop('disabled', !supportsStart);
+    $select_start_type.prop('disabled', !supportsStart);
+
+    $input_start_name.prop('disabled', !supportsStart || !ln.supportsStartName(app, platform) || startType == 'none');
+    $('#start .name').toggleClass('disabled', !supportsStart || !ln.supportsStartName(app, platform));
+
+
+    $input_dest_name.prop('disabled', !ln.supportsDestName(app, platform));
+    $('#dest .name').toggleClass('disabled', !ln.supportsDestName(app, platform));
+
+    // Set start/dest types
+    $('#start .location').toggleClass('disabled', startType == 'none');
+    $select_start.prop('disabled', startType == 'none');
+
+    $select_start.find('option.name').prop('disabled', startType == "coord");
+    $select_start.find('option.coord').prop('disabled', startType == "name");
+    $select_start.find('option').each(function(){
+        var option = $(this);
+        if(!option.prop("disabled")){
+            option.prop("selected", true);
+            return false;
+        }
+    });
+
+    $select_dest.find('option.name').prop('disabled', destType == "coord");
+    $select_dest.find('option.coord').prop('disabled', destType == "name");
+    $select_dest.find('option').each(function(){
+        var option = $(this);
+        if(!option.prop("disabled")){
+            option.prop("selected", true);
+            return false;
+        }
+    });
 }
 
-function setTransportModes(){
-    var modes;
-    var $select = $('select.modes');
-    switch(platform){
-        case "android":
-            $select.prop('disabled', $('body.android #navigation-mode select').val() === "maps");
-            modes = transportModes["android"];
-            break;
-        case "windows":
-            modes = transportModes["windows"];
-            break;
-        case "ios":
-            if($('#prefer-google-maps input').prop('checked')){
-                modes = transportModes["ios-google-maps"];
-            }else{
-                modes = transportModes["ios-apple-maps"];
-            }
-            break;
+function navigate(){
+    var values = {};
+    $.each($(this).serializeArray(), function(i, field) {
+        values[field.name] = field.value;
+    });
+
+    // Pre-process values
+    if(values["dest"] && values["dest"].match(coordsRegExp)){
+        values["dest"] = values["dest"].split(",");
     }
-    $select.empty();
-    for(var i=0; i<modes.length; i++){
-        var mode = modes[i];
-        $select.append($('<option value="'+mode+'">'+mode+'</option>'));
+    if(values["start"] && values["start"].match(coordsRegExp)){
+        values["start"] = values["start"].split(",");
     }
+
+    ln.navigate(values["dest"], {
+        successCallback: function(){
+            console.info("Launched navigator app");
+        },
+        errorCallback: function(err){
+            console.error("Error launching navigator app: "+err);
+        },
+        app: values["app"],
+        destinationName: values["dest-name"],
+        start: values["start"],
+        startName: values["start-name"],
+        transportMode: values["transport-mode"],
+        launchMode: values["launch-mode"],
+        enableDebug: true
+    });
 }
 
 function init() {
+    ln = launchnavigator;
     platform = device.platform.toLowerCase();
-    if(platform.match(/win/)){
-        platform = "windows";
+    if(platform == "android"){
+        platform = ln.PLATFORM.ANDROID;
+    }else if(platform == "ios"){
+        platform = ln.PLATFORM.IOS;
+    }else if(platform.match(/win/)){
+        platform = ln.PLATFORM.WINDOWS;
     }
     $('body').addClass(platform);
 
-    $("#all-1 button").click(function(){
-        launchnavigator.navigate([$("#all-1 .dlat").val(),$("#all-1 .dlon").val()], null, onSuccess, onError, extendDefaultOptions());
+    // Get DOM refs
+    $form = $('#form');
+    $select_app = $('#app select');
+    $select_transport_mode = $('#transport-mode select');
+    $select_launch_mode = $('#launch-mode select');
+    $select_dest_type = $('#dest .type select');
+    $select_dest =  $('#dest .location select');
+    $input_dest_name = $('#dest .name input');
+    $select_start_type = $('#start .type select');
+    $select_start =  $('#start .location select');
+    $input_start_name = $('#start .name input');
+
+    // Populate apps for this platform
+    ln.getAppsForPlatform(platform).forEach(function(app){
+        $select_app.append($('<option value="'+ app+'">'+ ln.getAppDisplayName(app)+'</option>'));
     });
 
-    $("#all-2 button").click(function(){
-        launchnavigator.navigate($("#all-2 .dname").val(), null, onSuccess, onError, extendDefaultOptions());
+    // disable those that are not available
+    launchnavigator.availableApps(function(results){
+        for(var app in results){
+            if(!results[app]){
+                $select_app.find('option[value="'+app+'"]')
+                    .prop('disabled', true)
+                    .addClass('disabled');
+            }
+        }
+    },function onError(errMsg){
+        navigator.notification.alert("Error checking installed apps: "+errMsg);
     });
 
-    $("#all-3 button").click(function(){
-        launchnavigator.navigate([$("#all-3 .dlat").val(),$("#all-3 .dlon").val()], [$("#all-3 .slat").val(),$("#all-3 .slon").val()], onSuccess, onError, extendDefaultOptions());
-    });
+    // Set change handlers
+    $select_app.change(updateUI);
+    $select_transport_mode.change(updateUI);
+    $select_dest_type.change(updateUI);
+    $select_start_type.change(updateUI);
+    $form.submit(navigate);
 
-    $("#all-4 button").click(function(){
-        launchnavigator.navigate($("#all-4 .dname").val(), $("#all-4 .sname").val(), onSuccess, onError, extendDefaultOptions());
-    });
-
-    $("#all-5 button").click(function(){
-        launchnavigator.navigate($("#all-5 .dname").val(), $("#all-5 .sname").val(), onSuccess, onError, extendDefaultOptions({
-            transportMode: $("#all-5 select.modes").val()
-        }));
-    });
-
-    $('body.ios #prefer-google-maps input').change(setTransportModes);
-
-    if(platform === "ios"){
-        // Check if Google Maps is available on iOS device
-        launchnavigator.isGoogleMapsAvailable(function(available){
-            $('#prefer-google-maps input').prop('disabled', !available);
-        });
-    }
-
-    $('body.android #navigation-mode select').change(function(){
-        $('input.slat, input.slon, input.sname').prop('disabled', $(this).val() === "turn-by-turn");
-        setTransportModes();
-    });
-    setTransportModes();
-
+    // Refresh UI
+    updateUI();
 }
 $(document).on("deviceready", init);
