@@ -21,6 +21,7 @@
     <preference name="ios-statusbarstyle" value="black-opaque" />
 
     <!-- Android -->
+    <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
     <preference name="exit-on-suspend" value="false" />
 
@@ -36,13 +37,15 @@
     <preference name="disable-cursor" value="false" />
 
 
-    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" version="2"/>
-    <plugin name="cordova-plugin-geolocation" version="1"/>
-    <plugin name="cordova-plugin-device" version="1"/>
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3"/>
+    <plugin name="cordova-plugin-geolocation" spec="1"/>
+    <plugin name="cordova-plugin-device" spec="1"/>
+    <plugin name="cordova-plugin-dialogs" spec="1"/>
 
-    <gap:plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" />
-    <gap:plugin name="org.apache.cordova.device" />
-    <gap:plugin name="org.apache.cordova.geolocation" />
+    <gap:plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />
+    <gap:plugin name="org.apache.cordova.device"  spec="1"/>
+    <gap:plugin name="org.apache.cordova.geolocation" spec="1"/>
+    <gap:plugin name="org.apache.cordova.dialogs" spec="1"/>
 
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
