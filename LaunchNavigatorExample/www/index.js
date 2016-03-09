@@ -97,7 +97,11 @@ function init() {
     if(platform === "ios"){
         // Check if Google Maps is available on iOS device
         launchnavigator.isGoogleMapsAvailable(function(available){
+            console.log("Google Maps IS"+(available ? " " : " NOT ") + "available");
             $('#prefer-google-maps input').prop('disabled', !available);
+            if(!available){
+                $('#prefer-google-maps label').css('text-decoration', 'line-through');
+            }
         });
     }
 

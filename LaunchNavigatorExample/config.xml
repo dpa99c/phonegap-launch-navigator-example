@@ -37,7 +37,7 @@
     <preference name="disable-cursor" value="false" />
 
 
-    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" version="1"/>
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" version="2"/>
     <plugin name="cordova-plugin-geolocation" version="1"/>
     <plugin name="cordova-plugin-device" version="1"/>
 
