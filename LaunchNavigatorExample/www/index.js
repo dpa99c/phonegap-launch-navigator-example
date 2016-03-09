@@ -38,7 +38,7 @@ function updateUI(){
     $select_launch_mode.prop('disabled', !ln.supportsLaunchMode(app, platform));
     $('#launch-mode').toggleClass('disabled', !ln.supportsLaunchMode(app, platform));
 
-    var supportsStart = ln.supportsStart(app, platform);
+    var supportsStart = ln.supportsStart(app, platform, launchMode);
     $('#start').toggleClass('disabled', !supportsStart);
     $select_start.prop('disabled', !supportsStart);
     $select_start_type.prop('disabled', !supportsStart);
@@ -46,9 +46,8 @@ function updateUI(){
     $input_start_name.prop('disabled', !supportsStart || !ln.supportsStartName(app, platform) || startType == 'none');
     $('#start .name').toggleClass('disabled', !supportsStart || !ln.supportsStartName(app, platform));
 
-
-    $input_dest_name.prop('disabled', !ln.supportsDestName(app, platform));
-    $('#dest .name').toggleClass('disabled', !ln.supportsDestName(app, platform));
+    $input_dest_name.prop('disabled', !ln.supportsDestName(app, platform, launchMode));
+    $('#dest .name').toggleClass('disabled', !ln.supportsDestName(app, platform, launchMode));
 
     // Set start/dest types
     $('#start .location').toggleClass('disabled', startType == 'none');
@@ -75,7 +74,8 @@ function updateUI(){
     });
 }
 
-function navigate(){
+function navigate(e){
+    e.preventDefault();
     var values = {};
     $.each($(this).serializeArray(), function(i, field) {
         values[field.name] = field.value;
@@ -104,6 +104,7 @@ function navigate(){
         launchMode: values["launch-mode"],
         enableDebug: true
     });
+    return false;
 }
 
 function init() {
@@ -131,12 +132,15 @@ function init() {
     $input_start_name = $('#start .name input');
 
     // Populate apps for this platform
+    if(platform == ln.PLATFORM.ANDROID){
+        $select_app.append($('<option selected="selected" value="'+ln.APP.NONE+'">[None - use native chooser]</option>'));
+    }
     ln.getAppsForPlatform(platform).forEach(function(app){
         $select_app.append($('<option value="'+ app+'">'+ ln.getAppDisplayName(app)+'</option>'));
     });
 
     // disable those that are not available
-    launchnavigator.availableApps(function(results){
+    ln.availableApps(function(results){
         for(var app in results){
             if(!results[app]){
                 $select_app.find('option[value="'+app+'"]')
@@ -153,6 +157,7 @@ function init() {
     $select_transport_mode.change(updateUI);
     $select_dest_type.change(updateUI);
     $select_start_type.change(updateUI);
+    $select_launch_mode.change(updateUI);
     $form.submit(navigate);
 
     // Refresh UI

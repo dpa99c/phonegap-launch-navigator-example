@@ -1,97 +1,98 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-	    <meta name="format-detection" content="telephone=no" />
-	    <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-		<link rel="stylesheet" href="index.css" type="text/css" />
-	</head>
-	<body>
-		<h1>LaunchNavigator Example</h1>
+<head>
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	<link rel="stylesheet" href="index.css" type="text/css" />
+</head>
+<body>
+<h1>LaunchNavigator Example</h1>
 
-		<form id="form">
-			<div id="app" class="field">
-				<label>Navigation app: </label>
-				<select name="app"><!-- dynamically populated --></select>
-			</div>
+<form id="form">
+	<div id="app" class="field">
+		<label>Navigation app: </label>
+		<select name="app"><!-- dynamically populated --></select>
+	</div>
 
-			<div id="dest">
-				<div class="type field">
-					<label>Destination type</label>
-					<select name="dest-type">
-						<option value="name">Address</option>
-						<option value="coord">Coordinate</option>
-					</select>
-				</div>
-				<div class="location field">
-					<label>Destination</label>
-					<select name="dest">
-						<option class="name" value="London, UK">London, UK</option>
-						<option class="coord" value="50.279306,-5.163158">50.279306,-5.163158 (London, UK)</option>
+	<div id="dest">
+		<div class="type field">
+			<label>Destination type</label>
+			<select name="dest-type">
+				<option value="name">Address</option>
+				<option value="coord">Coordinate</option>
+			</select>
+		</div>
+		<div class="location field">
+			<label>Destination</label>
+			<select name="dest">
+				<option class="name" value="London, UK">London, UK</option>
+				<option class="coord" value="50.279306,-5.163158">50.279306,-5.163158 (London, UK)</option>
 
-						<option class="name" value="Manchester, UK">Manchester, UK</option>
-						<option class="coord" value="53.493002,-2.240080">53.493002, -2.240080 (Manchester, UK)</option>
+				<option class="name" value="Manchester, UK">Manchester, UK</option>
+				<option class="coord" value="53.493002,-2.240080">53.493002, -2.240080 (Manchester, UK)</option>
 
-						<option class="name" value="Birmingham, UK">Birmingham, UK</option>
-						<option class="coord" value="52.497007,-1.890419">52.497007, -1.890419 (Birmingham, UK)</option>
-					</select>
-				</div>
-				<div class="name field">
-					<label>Destination name</label>
-					<input type="text" name="dest-name" value="Some place" />
-				</div>
-			</div>
+				<option class="name" value="Birmingham, UK">Birmingham, UK</option>
+				<option class="coord" value="52.497007,-1.890419">52.497007, -1.890419 (Birmingham, UK)</option>
+			</select>
+		</div>
+		<div class="name field">
+			<label>Destination name</label>
+			<input type="text" name="dest-name" value="Some place" />
+		</div>
+	</div>
 
-			<div id="start">
-				<div class="type field">
-					<label>Start type</label>
-					<select name="start-type">
-						<option value="none">None (current location)</option>
-						<option value="name">Address</option>
-						<option value="coord">Coordinate</option>
-					</select>
-				</div>
-				<div class="location field">
-					<label>Start</label>
-					<select name="start">
-						<option class="name" value="Manchester, UK">Manchester, UK</option>
-						<option class="coord" value="53.493002,-2.240080">53.493002, -2.240080 (Manchester, UK)</option>
+	<div id="start">
+		<div class="type field">
+			<label>Start type</label>
+			<select name="start-type">
+				<option value="none">None (current location)</option>
+				<option value="name">Address</option>
+				<option value="coord">Coordinate</option>
+			</select>
+		</div>
+		<div class="location field">
+			<label>Start</label>
+			<select name="start">
+				<option class="name" value="Manchester, UK">Manchester, UK</option>
+				<option class="coord" value="53.493002,-2.240080">53.493002, -2.240080 (Manchester, UK)</option>
 
-						<option class="name" value="London, UK">London, UK</option>
-						<option class="coord" value="50.279306,-5.163158">50.279306,-5.163158 (London, UK)</option>
+				<option class="name" value="London, UK">London, UK</option>
+				<option class="coord" value="50.279306,-5.163158">50.279306,-5.163158 (London, UK)</option>
 
-						<option class="name" value="Birmingham, UK">Birmingham, UK</option>
-						<option class="coord" value="52.497007,-1.890419">52.497007, -1.890419 (Birmingham, UK)</option>
-					</select>
-				</div>
-				<div class="name field">
-					<label>Start name</label>
-					<input type="text" name="start-name" value="My place" />
-				</div>
-			</div>
+				<option class="name" value="Birmingham, UK">Birmingham, UK</option>
+				<option class="coord" value="52.497007,-1.890419">52.497007, -1.890419 (Birmingham, UK)</option>
+			</select>
+		</div>
+		<div class="name field">
+			<label>Start name</label>
+			<input type="text" name="start-name" value="My place" />
+		</div>
+	</div>
 
-			<div id="transport-mode" class="field">
-					<label>Transport mode</label>
-					<select name="transport-mode"><!-- dynamically populated --></select>
-			</div>
+	<div id="transport-mode" class="field">
+		<label>Transport mode</label>
+		<select name="transport-mode"><!-- dynamically populated --></select>
+	</div>
 
-			<div id="launch-mode" class="android-only field">
-				<label>Launch mode</label>
-				<select name="launch-mode">
-					<option value="maps" selected="selected">Maps</option>
-					<option value="turn-by-turn">Turn-by-turn</option>
-				</select>
-			</div>
+	<div id="launch-mode" class="android-only field">
+		<label>Launch mode</label>
+		<select name="launch-mode">
+			<option value="maps" selected="selected">Maps</option>
+			<option value="turn-by-turn">Turn-by-turn</option>
+			<option value="geo">geo: protocol</option>
+		</select>
+	</div>
 
-			<div>
-				<input type="submit" value="Navigate" />
-			</div>
-		</form>
+	<div>
+		<input type="submit" value="Navigate" />
+	</div>
+</form>
 
-		<script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="index.js"></script>
 
-	</body>
+</body>
 </html>
