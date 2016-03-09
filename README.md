@@ -73,7 +73,11 @@ Or import the project in Visual Studio 2013 and run it from there.
 
 ## Ionic
 
-The `IonicExample` folder contains an Ionic example project which illustrates how to wrap the plugin API as an AngularJS service. To run it, simply invoke with ionic, for example:
+The `IonicExample` folder contains an Ionic example project which illustrates how to wrap the plugin API as an AngularJS service. To run it, first install the plugin dependencies:
+
+    $ ionic state restore --plugins
+
+Then invoke a specified platform with ionic; for example:
 
     $ ionic run android
 
