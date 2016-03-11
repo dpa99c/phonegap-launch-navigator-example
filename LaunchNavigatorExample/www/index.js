@@ -3,7 +3,7 @@ var ln, platform,
     $select_dest_type, $select_dest, $input_dest_name,
     $select_start_type, $select_start, $input_start_name;
 
-var coordsRegExp = /^[\d.]+,[\d.]+$/;
+var coordsRegExp = /^[-\d.]+,[-\d.]+$/;
 
 
 function onSuccess(){
