@@ -28,6 +28,9 @@ The classic Cordova example project is in the `LaunchNavigatorExample` folder.
 
 There's also an `IonicExample` folder which contains an Ionic example project which illustrates how to wrap the plugin API as an AngularJS service.
 
+**IMPORTANT:** Note that the plugin will **NOT** work in a browser-emulated Cordova environment, for example by running `ionic serve` or using the [Ripple emulator](https://github.com/ripple-emulator/ripple).
+This plugin is intended to launch **native** navigation apps and therefore will only work on native mobile platforms (i.e. Android/iOS/Windows).
+
 ## Android
 
 To run the Android project either build and run the project using the Phonegap CLI:
@@ -76,9 +79,6 @@ Or import the project in Visual Studio 2013 and run it from there.
 The `IonicExample` folder contains an Ionic example project which illustrates how to wrap the plugin API as an AngularJS service. To run it, simply invoke with ionic, for example:
 
     $ ionic run android
-
-**IMPORTANT:** Note that the plugin will **NOT** work in a browser-emulated Cordova environment, for example by running `ionic serve` or using the [Ripple emulator](https://github.com/ripple-emulator/ripple).
-This plugin is intended to launch **native** navigation apps and therefore will only work on native mobile platforms (i.e. Android/iOS/Windows).
 
 # Pre-compiled app
 If you're unable to build the project or just want to try it out, here is the project as a pre-built app:
