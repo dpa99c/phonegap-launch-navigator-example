@@ -3,9 +3,6 @@ var ln, platform,
     $select_dest_type, $select_dest, $input_dest_name,
     $select_start_type, $select_start, $input_start_name;
 
-var coordsRegExp = /^[-\d.]+,[-\d.]+$/;
-
-
 function onSuccess(){
     navigator.notification.alert("Successfully launched navigator");
 }
@@ -80,14 +77,6 @@ function navigate(e){
     $.each($(this).serializeArray(), function(i, field) {
         values[field.name] = field.value;
     });
-
-    // Pre-process values
-    if(values["dest"] && values["dest"].match(coordsRegExp)){
-        values["dest"] = values["dest"].split(",");
-    }
-    if(values["start"] && values["start"].match(coordsRegExp)){
-        values["start"] = values["start"].split(",");
-    }
 
     ln.navigate(values["dest"], {
         successCallback: function(){
