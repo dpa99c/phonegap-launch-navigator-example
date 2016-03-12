@@ -21,7 +21,6 @@
     <preference name="ios-statusbarstyle" value="black-opaque" />
 
     <!-- Android -->
-    <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
     <preference name="exit-on-suspend" value="false" />
 
