@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="uk.co.workingedge.phonegap.example.launchnavigator" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="uk.co.workingedge.phonegap.example.launchnavigator" version="3.0.0-dev" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>LaunchNavigatorExample</name>
     <description>
         Sample application that illustrates how to use the LaunchNavigator plugin
@@ -12,7 +12,6 @@
     <preference name="orientation" value="default" />
 
     <preference name="permissions" value="none" />
-    <preference name="phonegap-version" value="3.5.0" />
 
     <!-- Windows -->
     <preference name="target-device" value="universal" />
@@ -21,7 +20,11 @@
     <preference name="ios-statusbarstyle" value="black-opaque" />
 
 
-    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3"/>
+    <!-- FOR DEV -->
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="https://github.com/dpa99c/phonegap-launch-navigator#v3" />
+    <!-- END FOR DEV -->
+    <!-- RELEASE: <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />-->
+
     <plugin name="cordova-plugin-geolocation" spec="1"/>
     <plugin name="cordova-plugin-device" spec="1"/>
     <plugin name="cordova-plugin-dialogs" spec="1"/>
