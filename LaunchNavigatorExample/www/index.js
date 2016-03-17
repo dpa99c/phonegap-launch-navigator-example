@@ -121,9 +121,6 @@ function init() {
     $input_start_name = $('#start .name input');
 
     // Populate apps for this platform
-    if(platform == ln.PLATFORM.ANDROID){
-        $select_app.append($('<option selected="selected" value="'+ln.APP.NONE+'">[None - use native chooser]</option>'));
-    }
     ln.getAppsForPlatform(platform).forEach(function(app){
         $select_app.append($('<option value="'+ app+'">'+ ln.getAppDisplayName(app)+'</option>'));
     });
