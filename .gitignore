@@ -1,13 +1,4 @@
-.classpath
-ant-gen
-ant-bin
-ant-build
-bin
-gen
-local.properties
-build.xml
-out
 /.idea
-/LaunchNavigatorExample/platforms
-/LaunchNavigatorExample/plugins
-/LaunchNavigatorExample/.cordova
+/**/platforms
+/**/plugins
+/**/.cordova

@@ -1,0 +1,32 @@
+/* Empty. Add your own CSS if you like */
+
+.field{
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.field button{
+  padding: 10px;
+}
+
+button.navigate{
+  margin: 20px;
+}
+
+input{
+  border: #cccccc 1px solid !important;
+}
+
+input.error{
+  border-color: red !important;
+}
+
+.custom{
+  margin-top: 16px;
+}
+
+.custom input{
+  width: 100%;
+  max-width: 400px;
+  padding: 0 10px;
+}

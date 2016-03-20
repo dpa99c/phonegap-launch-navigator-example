@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="uk.co.workingedge.phonegap.example.launchnavigator" version="3.0.0-dev" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>LaunchNavigatorExample</name>
+    <name>Launch Navigator Advanced Example</name>
     <description>
-        Sample application that illustrates how to use the LaunchNavigator plugin
+        Sample application that illustrates advanced usage of the LaunchNavigator plugin
     </description>
     <author email="dave@workingedge.co.uk" href="http://www.workingedge.co.uk/dave">
         Dave Alden
@@ -25,7 +25,6 @@
     <!-- END FOR DEV -->
     <!-- RELEASE: <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />-->
 
-    <plugin name="cordova-plugin-geolocation" spec="1"/>
     <plugin name="cordova-plugin-device" spec="1"/>
     <plugin name="cordova-plugin-dialogs" spec="1"/>
 
