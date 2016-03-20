@@ -5,94 +5,105 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+  .run(function ($ionicPlatform) {
+    $ionicPlatform.ready(function () {
+      if (window.cordova && window.cordova.plugins.Keyboard) {
+        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+        // for form inputs)
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 
-      // Don't remove this line unless you know what you are doing. It stops the viewport
-      // from snapping when text inputs are focused. Ionic handles this internally for
-      // a much nicer keyboard experience.
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
+        // Don't remove this line unless you know what you are doing. It stops the viewport
+        // from snapping when text inputs are focused. Ionic handles this internally for
+        // a much nicer keyboard experience.
+        cordova.plugins.Keyboard.disableScroll(true);
+      }
+      if (window.StatusBar) {
+        StatusBar.styleDefault();
+      }
 
-  });
-})
+    });
+  })
 
-// Use the classic cordova plugin callback syntax to invoke launchnavigator
-.controller('classicController', function($scope) {
-    $scope.navigate = function(){
+// Define an Angular service to wrap the plugin
+  .service('$cordovaLaunchNavigator', ['$q', function ($q) {
+    "use strict";
 
-      var isRealDevice = ionic.Platform.isWebView();
-      if(!isRealDevice){
-        alert("launchnavigator will only work on a real mobile device! It is a NATIVE app launcher.");
+    var $cordovaLaunchNavigator = {};
+    $cordovaLaunchNavigator.navigate = function (destination, options) {
+      var q = $q.defer(),
+        isRealDevice = ionic.Platform.isWebView();
+
+      if (!isRealDevice) {
+        q.reject("launchnavigator will only work on a real mobile device! It is a NATIVE app launcher.");
+      } else {
+        try {
+
+          var successFn = options.successCallBack || function () {
+              },
+            errorFn = options.errorCallback || function () {
+              },
+            _successFn = function () {
+              successFn();
+              q.resolve();
+            },
+            _errorFn = function (err) {
+              errorFn(err);
+              q.reject(err);
+            };
+
+          options.successCallBack = _successFn;
+          options.errorCallback = _errorFn;
+
+          launchnavigator.navigate(destination, options);
+        } catch (e) {
+          q.reject("Exception: " + e.message);
+        }
+      }
+      return q.promise;
+    };
+
+    return $cordovaLaunchNavigator;
+  }])
+
+// Define a controller to use the promised service
+  .controller('mainController', function ($scope, $cordovaLaunchNavigator) {
+    $scope.formData = {
+      dest: "Westminster, London, UK"
+    };
+
+    $scope.$watch('formData', function (formData) {
+      if(formData.start != "custom" || formData.custom_start){
+        $('#start .custom input').removeClass('error');
+      }
+      if(formData.dest != "custom" || formData.custom_dest){
+        $('#dest .custom input').removeClass('error');
+      }
+    }, true);
+
+    $scope.navigate = function () {
+
+      // Validate
+      if($scope.formData.start == "custom" && !$scope.formData.custom_start){
+        $('#start .custom input').addClass('error');
         return;
       }
 
-      try{
-        launchnavigator.navigate(
-          "London, UK",
-          "Manchester, UK",
-          function(){
-            alert("Plugin success");
-          },
-          function(error){
-            alert("Plugin error: "+ error);
-          },
-          {
-            navigationMode: "maps"
-          }
-        );
-      }catch(e){
-        alert("Exception: "+e.message);
+      if($scope.formData.dest == "custom" && !$scope.formData.custom_dest){
+        $('#dest .custom input').addClass('error');
+        return;
       }
-    }
-})
 
-// Define an Angular service to wrap the plugin
-  .service('$cordovaLaunchNavigator', ['$q', function($q) {
-  "use strict";
+      var start = $scope.formData.start == "custom" ? $scope.formData.custom_start : $scope.formData.start,
+        dest = $scope.formData.dest == "custom" ? $scope.formData.custom_dest : $scope.formData.dest;
 
-  var $cordovaLaunchNavigator = {};
-  $cordovaLaunchNavigator.navigate = function(destination, start, options) {
-    var q = $q.defer(),
-      isRealDevice = ionic.Platform.isWebView();
+      $cordovaLaunchNavigator.navigate(dest, {
+        start: start,
+        enableDebug: true
+      }).then(function () {
+        alert("Navigator launched");
+      }, function (err) {
+        alert(err);
+      });
+    };
 
-    if(!isRealDevice){
-      q.reject("launchnavigator will only work on a real mobile device! It is a NATIVE app launcher.");
-    }else{
-      try{
-        launchnavigator.navigate(destination, start, function () {
-          q.resolve();
-        }, function (err) {
-          q.reject(err);
-        }, options);
-      }catch(e){
-        q.reject("Exception: "+e.message);
-      }
-    }
-    return q.promise;
-  };
-
-  return $cordovaLaunchNavigator;
-}])
-
-// Define a controller to use the promised service
-.controller('promisedController', function($scope, $cordovaLaunchNavigator) {
-  var destination = "London, UK";
-  var start = "Manchester, UK";
-
-  $scope.navigate = function(){
-    $cordovaLaunchNavigator.navigate(destination, start).then(function () {
-      alert("Navigator launched");
-    }, function (err) {
-      alert(err);
-    });
-  };
-
-});
+  });

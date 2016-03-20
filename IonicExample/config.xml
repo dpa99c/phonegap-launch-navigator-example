@@ -9,6 +9,7 @@
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
@@ -16,9 +17,17 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
+
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
+
+  <!-- FOR DEV -->
+  <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="https://github.com/dpa99c/phonegap-launch-navigator#v3" />
+  <!-- END FOR DEV -->
+  <!-- RELEASE: <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />-->
+
+
   <platform name="android">
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
     <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>

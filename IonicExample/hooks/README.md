@@ -1,3 +1,27 @@
+<!-- START table-of-contents -->
+**Table of Contents**
+
+- [Licensed to the Apache Software Foundation (ASF) under one](#licensed-to-the-apache-software-foundation-asf-under-one)
+- [or more contributor license agreements.  See the NOTICE file](#or-more-contributor-license-agreements--see-the-notice-file)
+- [distributed with this work for additional information](#distributed-with-this-work-for-additional-information)
+- [regarding copyright ownership.  The ASF licenses this file](#regarding-copyright-ownership--the-asf-licenses-this-file)
+- [to you under the Apache License, Version 2.0 (the](#to-you-under-the-apache-license-version-20-the)
+- ["License"); you may not use this file except in compliance](#license-you-may-not-use-this-file-except-in-compliance)
+- [with the License.  You may obtain a copy of the License at](#with-the-license--you-may-obtain-a-copy-of-the-license-at)
+- [http://www.apache.org/licenses/LICENSE-2.0](#httpwwwapacheorglicenseslicense-20)
+- [Unless required by applicable law or agreed to in writing,](#unless-required-by-applicable-law-or-agreed-to-in-writing)
+- [software distributed under the License is distributed on an](#software-distributed-under-the-license-is-distributed-on-an)
+- ["AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY](#as-is-basis-without-warranties-or-conditions-of-any)
+- [KIND, either express or implied.  See the License for the](#kind-either-express-or-implied--see-the-license-for-the)
+- [specific language governing permissions and limitations](#specific-language-governing-permissions-and-limitations)
+- [under the License.](#under-the-license)
+- [Cordova Hooks](#cordova-hooks)
+  - [Hook Directories](#hook-directories)
+  - [Script Interface](#script-interface)
+  - [Writing hooks](#writing-hooks)
+
+<!-- END table-of-contents -->
+
 <!--
 #
 # Licensed to the Apache Software Foundation (ASF) under one
