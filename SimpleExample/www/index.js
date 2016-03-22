@@ -11,8 +11,8 @@ function onError(errMsg){
 function navigate(e){
     e.preventDefault();
 
-    var dest = $('#dest select').val(),
-        start = $('#start select').val();
+    var dest = $('#dest input').val(),
+        start = $('#start input').val();
 
     launchnavigator.navigate(dest, {
         start: start,
