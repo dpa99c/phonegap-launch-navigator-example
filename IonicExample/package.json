@@ -1,7 +1,7 @@
 {
-  "name": "ionicexample",
-  "version": "1.1.1",
-  "description": "IonicExample: An Ionic project",
+  "name": "Launch Navigator Ionic Example",
+  "version": "3.0.0",
+  "description": " Sample application that illustrates usage of the LaunchNavigator plugin with Ionic framework",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

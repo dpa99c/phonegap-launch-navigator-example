@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.ionicexample974899" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>IonicExample</name>
+<widget
+  id="uk.co.workingedge.phonegap.example.launchnavigator.ionic"
+  version="3.0.0"
+  xmlns="http://www.w3.org/ns/widgets"
+  xmlns:cdv="http://cordova.apache.org/ns/1.0">
+
+  <name>Launch Navigator Ionic Example</name>
   <description>
-        An Ionic Framework and Cordova project.
+      Sample application that illustrates usage of the LaunchNavigator plugin with Ionic framework.
     </description>
-  <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+  <author email="dpa99c@gmail.com" href="http://github.com/dpa99c">
+     Dave Alden
     </author>
   <content src="index.html"/>
   <access origin="*"/>
@@ -22,10 +27,7 @@
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
 
-  <!-- FOR DEV -->
-  <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="https://github.com/dpa99c/phonegap-launch-navigator#v3" />
-  <!-- END FOR DEV -->
-  <!-- RELEASE: <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />-->
+  <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />
 
 
   <platform name="android">
@@ -48,6 +50,7 @@
     <splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
     <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
+
   <platform name="ios">
     <icon src="resources/ios/icon/icon.png" width="57" height="57"/>
     <icon src="resources/ios/icon/icon@2x.png" width="114" height="114"/>
@@ -75,5 +78,10 @@
     <splash src="resources/ios/splash/Default-Portrait~ipad.png" height="1024" width="768"/>
     <splash src="resources/ios/splash/Default@2x~iphone.png" height="960" width="640"/>
     <splash src="resources/ios/splash/Default~iphone.png" height="480" width="320"/>
+  </platform>
+
+  <platform name="windows">
+    <preference name="windows-target-version" value="10.0" />
+    <preference name="target-device" value="universal" />
   </platform>
 </widget>
