@@ -15,7 +15,8 @@ function updateUI(){
     var app = $select_app.val(),
         launchMode = $select_launch_mode.val(),
         startType = $select_start_type.val(),
-        destType = $select_dest_type.val();
+        destType = $select_dest_type.val(),
+        transportMode = $select_transport_mode.val();
 
     // Set transport modes
     $select_transport_mode.empty();
@@ -23,9 +24,14 @@ function updateUI(){
         $select_transport_mode.prop('disabled', false);
         $('#transport-mode').toggleClass('disabled', false);
         var transportModes = ln.getTransportModes(app, platform, launchMode);
-        transportModes.forEach(function(transportMode){
-            $select_transport_mode.append($('<option value="'+transportMode+'">'+transportMode+'</option>'));
+        transportModes.forEach(function(_transportMode){
+            var opt = $('<option value="'+_transportMode+'">'+_transportMode+'</option>');
+            $select_transport_mode.append(opt);
+            if(_transportMode == transportMode){
+                opt.attr("selected", "selected");
+            }
         });
+
     }else{
         $select_transport_mode.prop('disabled', true);
         $('#transport-mode').toggleClass('disabled', true);

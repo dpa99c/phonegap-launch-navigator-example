@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget xmlns="http://www.w3.org/ns/widgets"
-        id="uk.co.workingedge.phonegap.example.launchnavigator"
+        id="workingedge.example.launchnavigator.simple"
         version="3.0.0">
 
     <name>Launch Navigator Simple Example</name>
@@ -18,9 +18,10 @@
     <platform name="windows">
         <preference name="windows-target-version" value="10.0" />
         <preference name="target-device" value="universal" />
+        <preference name="Windows.Universal-MinVersion" value="10.0.0.0" />
     </platform>
 
-
+    <plugin name="cordova-plugin-dialogs" spec="1"/>
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />
 
 
