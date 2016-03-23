@@ -15,7 +15,7 @@ function navigate(e){
         start = $('#start input').val();
 
     if(!dest){
-        alert("A destination must be specified");
+        navigator.notification. alert("A destination must be specified");
         return;
     }
 

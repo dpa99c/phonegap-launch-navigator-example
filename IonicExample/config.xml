@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget
-  id="uk.co.workingedge.phonegap.example.launchnavigator.ionic"
+  id="workingedge.example.launchnavigator.ionic"
   version="3.0.0"
   xmlns="http://www.w3.org/ns/widgets"
   xmlns:cdv="http://cordova.apache.org/ns/1.0">
@@ -83,5 +83,6 @@
   <platform name="windows">
     <preference name="windows-target-version" value="10.0" />
     <preference name="target-device" value="universal" />
+    <preference name="Windows.Universal-MinVersion" value="10.0.0.0" />
   </platform>
 </widget>
