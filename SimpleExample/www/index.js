@@ -14,6 +14,11 @@ function navigate(e){
     var dest = $('#dest input').val(),
         start = $('#start input').val();
 
+    if(!dest){
+        alert("A destination must be specified");
+        return;
+    }
+
     launchnavigator.navigate(dest, {
         start: start,
         enableDebug: true
