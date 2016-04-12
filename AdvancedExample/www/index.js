@@ -132,17 +132,20 @@ function init() {
     });
 
     // disable those that are not available
+    var onAvailableError = function onError(errMsg){
+        navigator.notification.alert("Error checking installed apps: "+errMsg);
+    };
     ln.availableApps(function(results){
         for(var app in results){
-            if(!results[app]){
-                $select_app.find('option[value="'+app+'"]')
-                    .prop('disabled', true)
-                    .addClass('disabled');
-            }
+            ln.isAppAvailable(app, function(app, available){
+                if(!available){
+                    $select_app.find('option[value="'+app+'"]')
+                        .prop('disabled', true)
+                        .addClass('disabled');
+                }
+            }.bind(this, app), onAvailableError);
         }
-    },function onError(errMsg){
-        navigator.notification.alert("Error checking installed apps: "+errMsg);
-    });
+    },onAvailableError);
 
     // Set change handlers
     $select_app.change(updateUI);
