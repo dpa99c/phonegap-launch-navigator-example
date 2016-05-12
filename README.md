@@ -56,10 +56,9 @@ To run an example project on Windows Universal (8.1/10) using the Cordova CLI:
 
     $ cordova run windows
 
-Note: This will run the app on your Windows PC. For this to work, you need at least Visual Studio 2013 Community: http://www.visualstudio.com
+Note: This will run the app in your Windows 8.1 PC or Windows 10 (PC). For this to work, you need at least Visual Studio 2015 Community: http://www.visualstudio.com
 
-Or import the project in Visual Studio 2013 and run it from there. Within Visual Studio, you will be able to choose between Windows Phone 8.1 and Windows 8.1/10 PC.
-The Visual Studio 2013 project is located here:
+Or import the project in Visual Studio 2015 and run it from there. Within Visual Studio, you will be able to choose between Windows Phone 8.1, Windows 8.1 (PC) and Windows 10 (PC) Universal. The Visual Studio 2015 project is located here:
 
     LaunchNavigatorExample/platforms/windows/CordovaApp.sln
 
@@ -69,9 +68,9 @@ To run an example project on Windows Phone 8.0 using the Cordova CLI:
 
     $ cordova run wp8
 
-Note: This will run the app in your Windows 8.0 or 8.1 phone. For this to work, you need at least Visual Studio 2013 Community: http://www.visualstudio.com
+This will run the app in your Windows 8.0 or 8.1 phone. For this to work, you need at least Visual Studio 2015 Community: http://www.visualstudio.com
 
-Or import the project in Visual Studio 2013 and run it from there.
+Or import the project in Visual Studio 2015 and run it from there.
 
 	LaunchNavigatorExample/platforms/wp8/LaunchNavigatorExample.sln
 
