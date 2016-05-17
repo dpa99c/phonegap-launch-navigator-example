@@ -97,6 +97,7 @@ function navigate(e){
         startName: values["start-name"],
         transportMode: values["transport-mode"],
         launchMode: values["launch-mode"],
+        extras: parseExtras(values["extras"]),
         enableDebug: true
     });
     return false;
@@ -158,4 +159,23 @@ function init() {
     // Refresh UI
     updateUI();
 }
+
+function parseExtras(sExtras){
+    if(!sExtras) return null;
+
+    try{
+        var oExtras = {};
+        sExtras = sExtras.replace(';','&');
+        var params = sExtras.split('&');
+        for(var i=0; i<params.length; i++){
+            var parts = params[i].split('=');
+            oExtras[parts[0]] = parts[1];
+        }
+    }catch(e){
+        alert("Failed to parse 'App-specific parameters' as URI querystring - please check the syntax");
+        return null;
+    }
+    return oExtras;
+}
+
 $(document).on("deviceready", init);
