@@ -1,6 +1,6 @@
 {
   "name": "Launch Navigator Ionic Example",
-  "version": "3.0.0",
+  "version": "3.1.1",
   "description": " Sample application that illustrates usage of the LaunchNavigator plugin with Ionic framework",
   "dependencies": {
     "gulp": "^3.5.6",
