@@ -1,0 +1,18 @@
+{
+     "android": {
+        "debug": {
+            "keystore": "../../workingedge_distribution.keystore",
+            "storePassword": "rg550055",
+            "alias": "walks",
+            "password" : "rg550055",
+            "keystoreType": ""
+         },
+         "release": {
+            "keystore": "../../workingedge_distribution.keystore",
+            "storePassword": "rg550055",
+            "alias": "walks",
+            "password" : "rg550055",
+            "keystoreType": ""
+         }
+     }
+ }

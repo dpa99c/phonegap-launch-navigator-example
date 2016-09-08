@@ -1,5 +1,6 @@
-/.idea
-/**/platforms
-/**/plugins
-/**/.cordova
-build.json
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+node_modules/
+platforms/
+plugins/
