@@ -98,6 +98,8 @@ function navigate(e){
         transportMode: values["transport-mode"],
         launchMode: values["launch-mode"],
         extras: parseExtras(values["extras"]),
+        appSelectionDialogHeader: "Custom Header Text",
+        appSelectionCancelButton: "Custom Cancel Text",
         enableDebug: true
     });
     return false;
