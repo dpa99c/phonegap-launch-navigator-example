@@ -1,7 +1,8 @@
 var ln, platform,
     $form, $select_app, $select_transport_mode, $select_launch_mode,
     $select_dest_type, $select_dest, $input_dest_name,
-    $select_start_type, $select_start, $input_start_name;
+    $select_start_type, $select_start, $input_start_name,
+    $select_selectable_apps;
 
 function onSuccess(){
     navigator.notification.alert("Successfully launched navigator");
@@ -75,6 +76,10 @@ function updateUI(){
             return false;
         }
     });
+
+    // Set start/dest types
+    $('#selectable-apps').toggleClass('disabled', app != ln.APP.USER_SELECT);
+    $select_selectable_apps.prop('disabled', app != ln.APP.USER_SELECT);
 }
 
 function navigate(e){
@@ -100,6 +105,7 @@ function navigate(e){
         extras: parseExtras(values["extras"]),
         appSelectionDialogHeader: "Custom Header Text",
         appSelectionCancelButton: "Custom Cancel Text",
+        appSelectionList: getSelectableApps(),
         enableDebug: true
     });
     return false;
@@ -128,10 +134,14 @@ function init() {
     $select_start_type = $('#start .type select');
     $select_start =  $('#start .location select');
     $input_start_name = $('#start .name input');
+    $select_selectable_apps = $('#selectable-apps select');
 
     // Populate apps for this platform
     ln.getAppsForPlatform(platform).forEach(function(app){
         $select_app.append($('<option value="'+ app+'">'+ ln.getAppDisplayName(app)+'</option>'));
+        if(app != ln.APP.USER_SELECT){
+            $select_selectable_apps.append($('<option selected="selected" value="'+ app+'">'+ ln.getAppDisplayName(app)+'</option>'));
+        }
     });
 
     // disable those that are not available
@@ -178,6 +188,14 @@ function parseExtras(sExtras){
         return null;
     }
     return oExtras;
+}
+
+function getSelectableApps(){
+    var selected = [];
+    $select_selectable_apps.find('option').each(function(){
+        if(this.selected) selected.push(this.value);
+    });
+    return selected;
 }
 
 $(document).on("deviceready", init);
