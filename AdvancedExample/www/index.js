@@ -98,6 +98,11 @@ function navigate(e){
         transportMode: values["transport-mode"],
         launchMode: values["launch-mode"],
         extras: parseExtras(values["extras"]),
+        appSelectionDialogHeader: "Custom header",
+        appSelectionCancelButton: "Custom cancel text",
+        appSelectionCallback: function(app){
+            console.info("User selectedapp app: "+app);
+        },
         enableDebug: true
     });
     return false;
