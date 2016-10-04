@@ -9,12 +9,11 @@ This repo contains example projects illustrating how to use the [Launch Navigato
 - [Downloading](#downloading)
 - [Projects](#projects)
 - [Building and running](#building-and-running)
-  - [Android](#android)
-  - [iOS](#ios)
-  - [Windows](#windows)
-  - [WP8](#wp8)
+  - [SimpleExample and AdvancedExample](#simpleexample-and-advancedexample)
+  - [IonicExample and Ionic2Example](#ionicexample-and-ionic2example)
+- [Supported platforms](#supported-platforms)
 - [Credits](#credits)
-- [License](#license)
+- [License](#license)
 
 <!-- END table-of-contents -->
  
@@ -28,52 +27,51 @@ To download the example, clone the repo using git:
 
 The repo contains the following example projects in sub-directories:
 
-- SimpleExample - a basic example showing how the plugin can be invoked to navigate to a specified destination, with an optionally specified start location.
-- AdvancedExample - a more complex example which shows how the plugin can be used to launch specific navigation apps and how their input parameters can be tailored.
-- IonicExample - a basic example using Ionic framework / AngularJS
+- SimpleExample - a basic (pure HTML5) example showing how the plugin can be invoked to navigate to a specified destination, with an optionally specified start location.
+- AdvancedExample - a more complex (pure HTML5) example which shows how the plugin can be used to launch specific navigation apps and how their input parameters can be tailored.
+- IonicExample - a basic example using Ionic (1) framework / Angular (1)
+- Ionic2Example - a basic example using Ionic 2 framework / Angular 2
 
 # Building and running
 
-Each example project can be built for running on your local machine by opening a terminal in one of the example project directories and running commands as follows:
+The plugin is intended to launch **native** navigation apps and therefore will only work on native mobile platforms (i.e. Android/iOS/Windows).
+Note that the plugin will **NOT** work in a browser-emulated Cordova environment, for example by running `ionic serve` or using the [Ripple emulator](https://github.com/ripple-emulator/ripple).
 
-## Android
+To build and run any of the projects, first open a terminal window and change to the project directory, for example:
 
-To run an example project on Android using the Cordova CLI:
+    $ cd SimpleExample
+
+## SimpleExample and AdvancedExample
+    
+Add a platform, for example Android:
+    
+    $ cordova platform add android
+
+Then build and run the project. The plugins dependencies will be satifisied automatically. For example:
 
     $ cordova run android
+    
+## IonicExample and Ionic2Example
 
-## iOS
+Since these are ionic-based projects, first install node module dependencies
 
-To run an example project on iOS using the Cordova CLI:
+    $ npm install
+    
+Then satisfy the plugin dependencies:
+    
+    $ ionic state restore
+    
+Add a platform, for example Android:
+    
+    $ ionic platform add android
+        
+Then build and run the project, for example
 
-    $ cordova run ios
+    $ ionic run android      
 
-Note: For this to work, you need to install [ios-deploy](https://github.com/phonegap/ios-deploy) first: `npm install -g ios-deploy`
+# Supported platforms
 
-## Windows
-
-To run an example project on Windows Universal (8.1/10) using the Cordova CLI:
-
-    $ cordova run windows
-
-Note: This will run the app in your Windows 8.1 PC or Windows 10 (PC). For this to work, you need at least Visual Studio 2015 Community: http://www.visualstudio.com
-
-Or import the project in Visual Studio 2015 and run it from there. Within Visual Studio, you will be able to choose between Windows Phone 8.1, Windows 8.1 (PC) and Windows 10 (PC) Universal. The Visual Studio 2015 project is located here:
-
-    LaunchNavigatorExample/platforms/windows/CordovaApp.sln
-
-## WP8
-
-To run an example project on Windows Phone 8.0 using the Cordova CLI:
-
-    $ cordova run wp8
-
-This will run the app in your Windows 8.0 or 8.1 phone. For this to work, you need at least Visual Studio 2015 Community: http://www.visualstudio.com
-
-Or import the project in Visual Studio 2015 and run it from there.
-
-	LaunchNavigatorExample/platforms/wp8/LaunchNavigatorExample.sln
-
+The example projects will run on Android, iOS, Windows Universal (8.1/10) and Windows Phone 8 (8.0/8.1)
 
 
 # Credits
