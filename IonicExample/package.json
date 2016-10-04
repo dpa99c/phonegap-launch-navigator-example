@@ -1,6 +1,6 @@
 {
-  "name": "Launch Navigator Ionic Example",
-  "version": "3.1.1",
+  "name": "launchnavigator.ionicexample",
+  "version": "3.2.0",
   "description": " Sample application that illustrates usage of the LaunchNavigator plugin with Ionic framework",
   "dependencies": {
     "gulp": "^3.5.6",
@@ -21,11 +21,7 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "uk.co.workingedge.phonegap.plugin.launchnavigator",
-    "cordova-plugin-geolocation"
+    "uk.co.workingedge.phonegap.plugin.launchnavigator"
   ],
-  "cordovaPlatforms": [
-    "android",
-    "ios"
-  ]
+  "cordovaPlatforms": []
 }
