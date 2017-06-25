@@ -41,15 +41,20 @@ function updateUI(){
 
     // set launch mode availability
     $select_launch_mode.prop('disabled', !ln.supportsLaunchMode(app, platform));
-    $('#launch-mode').toggleClass('disabled', !ln.supportsLaunchMode(app, platform));
+    if(platform == "android") {
+        $('#google-maps-launch-mode').toggleClass('disabled', !ln.supportsLaunchMode(app, platform));
+    }
+    if(platform == "ios") {
+        $('#apple-maps-launch-mode').toggleClass('disabled', !ln.supportsLaunchMode(app, platform));
+    }
 
     var supportsStart = ln.supportsStart(app, platform, launchMode);
     $('#start').toggleClass('disabled', !supportsStart);
     $select_start.prop('disabled', !supportsStart);
     $select_start_type.prop('disabled', !supportsStart);
 
-    $input_start_name.prop('disabled', !supportsStart || !ln.supportsStartName(app, platform) || startType == 'none');
-    $('#start .name').toggleClass('disabled', !supportsStart || !ln.supportsStartName(app, platform));
+    $input_start_name.prop('disabled', !supportsStart || !ln.supportsStartName(app, platform, launchMode) || startType == 'none');
+    $('#start .name').toggleClass('disabled', !supportsStart || !ln.supportsStartName(app, platform, launchMode));
 
     $input_dest_name.prop('disabled', !ln.supportsDestName(app, platform, launchMode));
     $('#dest .name').toggleClass('disabled', !ln.supportsDestName(app, platform, launchMode));
@@ -90,7 +95,7 @@ function navigate(e){
         values[field.name] = field.value;
     });
 
-    ln.navigate(values["dest"], {
+    var opts = {
         successCallback: function(){
             console.info("Launched navigator app");
         },
@@ -102,17 +107,24 @@ function navigate(e){
         start: values["start"],
         startName: values["start-name"],
         transportMode: values["transport-mode"],
-        launchMode: values["launch-mode"],
         extras: parseExtras(values["extras"]),
         appSelectionDialogHeader: "Custom header",
         appSelectionCancelButton: "Custom cancel text",
-	appSelectionList: getSelectableApps(),
+        appSelectionList: getSelectableApps(),
         appSelectionCallback: function(app){
             console.info("User selected app: "+app);
         },
         enableDebug: true,
         enableGeolocation: values["enable-geolocation"] === "on"
-    });
+    };
+    if(platform === "android"){
+        opts.launchModeGoogleMaps = values["google-maps-launch-mode"];
+    }
+    if(platform === "ios"){
+        opts.launchModeAppleMaps = values["apple-maps-launch-mode"];
+    }
+
+    ln.navigate(values["dest"], opts);
     return false;
 }
 
@@ -132,7 +144,12 @@ function init() {
     $form = $('#form');
     $select_app = $('#app select');
     $select_transport_mode = $('#transport-mode select');
-    $select_launch_mode = $('#launch-mode select');
+    if(platform == "android"){
+        $select_launch_mode = $('#google-maps-launch-mode select');
+    }
+    if(platform == "ios"){
+        $select_launch_mode = $('#apple-maps-launch-mode select');
+    }
     $select_dest_type = $('#dest .type select');
     $select_dest =  $('#dest .location select');
     $input_dest_name = $('#dest .name input');

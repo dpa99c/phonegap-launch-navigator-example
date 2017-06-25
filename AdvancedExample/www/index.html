@@ -92,12 +92,20 @@
 		<input type="checkbox" name="enable-geolocation" checked="checked" />
 	</div>
 
-	<div id="launch-mode" class="android-only field">
-		<label>Launch mode</label>
-		<select name="launch-mode">
+	<div id="google-maps-launch-mode" class="android-only field">
+		<label>Google Maps Launch mode</label>
+		<select name="google-maps-launch-mode">
 			<option value="maps" selected="selected">Maps</option>
 			<option value="turn-by-turn">Turn-by-turn</option>
 			<option value="geo">geo: protocol</option>
+		</select>
+	</div>
+
+	<div id="apple-maps-launch-mode" class="ios-only field">
+		<label>Apple Maps Launch mode</label>
+		<select name="apple-maps-launch-mode">
+			<option value="uri_scheme" selected="selected">URI scheme</option>
+			<option value="mapkit">MapKit class</option>
 		</select>
 	</div>
 
