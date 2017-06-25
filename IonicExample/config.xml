@@ -2,7 +2,7 @@
 <widget
   id="workingedge.example.launchnavigator.ionic"
   ios-CFBundleIdentifier="uk.co.workingedge.example.launchnavigator.ionic"
-  version="3.1.1"
+  version="4.0.0"
   xmlns="http://www.w3.org/ns/widgets"
   xmlns:cdv="http://cordova.apache.org/ns/1.0">
 
@@ -28,7 +28,7 @@
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
 
-  <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />
+  <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="4" />
 
 
   <platform name="android">
