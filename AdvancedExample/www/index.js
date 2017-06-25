@@ -9,7 +9,8 @@ function onSuccess(){
 }
 
 function onError(errMsg){
-    navigator.notification.alert("Error launching navigator: "+errMsg);
+    console.error(errMsg);
+    navigator.notification.alert(errMsg, null, "Error");
 }
 
 function updateUI(){
@@ -94,7 +95,7 @@ function navigate(e){
             console.info("Launched navigator app");
         },
         errorCallback: function(err){
-            console.error("Error launching navigator app: "+err);
+            onError("Error launching navigator app: "+err);
         },
         app: values["app"],
         destinationName: values["dest-name"],
@@ -107,9 +108,10 @@ function navigate(e){
         appSelectionCancelButton: "Custom cancel text",
 	appSelectionList: getSelectableApps(),
         appSelectionCallback: function(app){
-            console.info("User selectedapp app: "+app);
+            console.info("User selected app: "+app);
         },
-        enableDebug: true
+        enableDebug: true,
+        enableGeolocation: values["enable-geolocation"] === "on"
     });
     return false;
 }
@@ -148,8 +150,8 @@ function init() {
     });
 
     // disable those that are not available
-    var onAvailableError = function onError(errMsg){
-        navigator.notification.alert("Error checking installed apps: "+errMsg);
+    var onAvailableError = function(errMsg){
+        onError("Error checking installed apps: "+errMsg);
     };
     ln.availableApps(function(results){
         for(var app in results){

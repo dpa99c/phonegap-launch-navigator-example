@@ -4,3 +4,4 @@
 /**/.cordova
 /www
 build.json
+node_modules
