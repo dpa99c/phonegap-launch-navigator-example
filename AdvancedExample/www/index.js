@@ -86,12 +86,32 @@ function updateUI(){
     // Set start/dest types
     $('#selectable-apps').toggleClass('disabled', app != ln.APP.USER_SELECT);
     $select_selectable_apps.prop('disabled', app != ln.APP.USER_SELECT);
+
+
+    $('#user-app-preference').toggleClass('disabled', app != ln.APP.USER_SELECT);
+
+    //Check if user has preferred app
+    ln.appSelection.userChoice.get(function(app){
+        $('#clearAppPreference')
+            .toggleClass('disabled', !app)
+            .prop('disabled', !app);
+
+        $('#preferred-app span').text(app ? ln.getAppDisplayName(app) : "[None]");
+    });
+
+    //Check if user has been asked whether to remember preference
+    ln.appSelection.userPrompted.get(function(hasBeenPrompted){
+        $('#resetUserPrompt')
+            .toggleClass('disabled', !hasBeenPrompted)
+            .prop('disabled', !hasBeenPrompted);
+
+        $('#user-prompted span').text(hasBeenPrompted ? "Yes" : "No");
+    });
 }
 
-function navigate(e){
-    e.preventDefault();
+function navigate(){
     var values = {};
-    $.each($(this).serializeArray(), function(i, field) {
+    $.each($('#form').serializeArray(), function(i, field) {
         values[field.name] = field.value;
     });
 
@@ -108,12 +128,18 @@ function navigate(e){
         startName: values["start-name"],
         transportMode: values["transport-mode"],
         extras: parseExtras(values["extras"]),
-        appSelectionDialogHeader: "Custom header",
-        appSelectionCancelButton: "Custom cancel text",
-        appSelectionList: getSelectableApps(),
-        appSelectionCallback: function(app){
-            console.info("User selected app: "+app);
+        appSelection:{
+            dialogHeaderText: "Custom header",
+            cancelButtonText: "Custom cancel text",
+            list: getSelectableApps(),
+            callback: function(app){
+                console.info("User selected app: "+app);
+            },
+            rememberChoice: {
+                enabled: values["should-remember-choice"]
+            }
         },
+
         enableDebug: true,
         enableGeolocation: values["enable-geolocation"] === "on"
     };
@@ -125,10 +151,11 @@ function navigate(e){
     }
 
     ln.navigate(values["dest"], opts);
-    return false;
 }
 
 function init() {
+    $(document).on("resume", updateUI);
+
     ln = launchnavigator;
     platform = device.platform.toLowerCase();
     if(platform == "android"){
@@ -188,7 +215,19 @@ function init() {
     $select_dest_type.change(updateUI);
     $select_start_type.change(updateUI);
     $select_launch_mode.change(updateUI);
-    $form.submit(navigate);
+    $form.submit(function(e){
+        e.preventDefault();
+        return false;
+    });
+    $('#navigate').click(navigate);
+
+    $('#clearAppPreference').click(function(){
+        ln.appSelection.userChoice.clear(updateUI);
+    });
+
+    $('#resetUserPrompt').click(function(){
+        ln.appSelection.userPrompted.clear(updateUI);
+    });
 
     // Refresh UI
     updateUI();

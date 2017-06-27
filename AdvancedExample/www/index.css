@@ -4,8 +4,9 @@
     margin-top: 20px;
 }
 
-.field button{
+button{
     padding: 10px;
+    margin: 16px 0;
 }
 
 .windows-only,

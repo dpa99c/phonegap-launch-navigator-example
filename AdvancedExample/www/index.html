@@ -16,6 +16,10 @@
 		<select name="app"><!-- dynamically populated --></select>
 	</div>
 
+	<div class="field">
+		<button id="navigate">Navigate</button>
+	</div>
+
 	<div id="dest">
 		<div class="type field">
 			<label>Destination type</label>
@@ -115,9 +119,30 @@
 		<p><small>Enter in querystring format: a=b&c=d</small></p>
 	</div>
 
-	<div class="field">
-		<input type="submit" value="Navigate" />
+	<div id="user-app-preference">
+		<h2>User app preference</h2>
+		<p id="preferred-app">Preferred app: <span></span></p>
+		<p id="user-prompted">Asked to remember?: <span></span></p>
+
+		<div id="should-remember-choice" class="field">
+			<label>Remember user choice?</label>
+			<select name="should-remember-choice">
+				<option value="false" selected="selected">No</option>
+				<option value="true">Yes</option>
+				<option value="prompt">Ask</option>
+			</select>
+		</div>
+
+		<div class="field">
+			<div>
+				<button id="clearAppPreference">Clear preferred app</button>
+			</div>
+			<div>
+				<button id="resetUserPrompt">Reset asked user</button>
+			</div>
+		</div>
 	</div>
+
 </form>
 
 <script type="text/javascript" src="cordova.js"></script>
