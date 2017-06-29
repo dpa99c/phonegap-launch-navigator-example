@@ -3,19 +3,20 @@ Cordova/Phonegap Launch Navigator Example
 
 This repo contains example projects illustrating how to use the [Launch Navigator plugin](https://github.com/dpa99c/phonegap-launch-navigator) to launch native navigation apps on iOS, Android, and Windows to get driving directions to a desired location.
 
-<!-- START table-of-contents -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [Downloading](#downloading)
+- [Cordova/Phonegap Launch Navigator Example](#cordovaphonegap-launch-navigator-example)
 - [Projects](#projects)
 - [Building and running](#building-and-running)
   - [SimpleExample and AdvancedExample](#simpleexample-and-advancedexample)
-  - [IonicExample and Ionic2Example](#ionicexample-and-ionic2example)
+  - [IonicExample, Ionic2Example, Ionic3Example](#ionicexample-ionic2example-ionic3example)
 - [Supported platforms](#supported-platforms)
 - [Credits](#credits)
-- [License](#license)
+- [License](#license)
 
-<!-- END table-of-contents -->
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
  
 # Downloading
 
@@ -29,8 +30,9 @@ The repo contains the following example projects in sub-directories:
 
 - SimpleExample - a basic (pure HTML5) example showing how the plugin can be invoked to navigate to a specified destination, with an optionally specified start location.
 - AdvancedExample - a more complex (pure HTML5) example which shows how the plugin can be used to launch specific navigation apps and how their input parameters can be tailored.
-- IonicExample - a basic example using Ionic (1) framework / Angular (1)
+- IonicExample - a basic example using Ionic 1 framework / Angular 1
 - Ionic2Example - a basic example using Ionic 2 framework / Angular 2
+- Ionic3Example - a basic example using Ionic 3 framework / Angular 4
 
 # Building and running
 
@@ -47,27 +49,23 @@ Add a platform, for example Android:
     
     $ cordova platform add android
 
-Then build and run the project. The plugins dependencies will be satifisied automatically. For example:
+Then build and run the project. The plugins dependencies will be satisfied automatically. For example:
 
     $ cordova run android
     
-## IonicExample and Ionic2Example
+## IonicExample, Ionic2Example, Ionic3Example
 
 Since these are ionic-based projects, first install node module dependencies
 
     $ npm install
     
-Then satisfy the plugin dependencies:
-    
-    $ ionic state restore
-    
 Add a platform, for example Android:
     
-    $ ionic platform add android
+    $ ionic cordova platform add android
         
 Then build and run the project, for example
 
-    $ ionic run android      
+    $ ionic cordova run android      
 
 # Supported platforms
 
