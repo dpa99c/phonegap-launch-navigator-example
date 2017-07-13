@@ -141,7 +141,7 @@ function navigate(){
         },
 
         enableDebug: true,
-        enableGeolocation: values["enable-geolocation"] === "on"
+        enableGeocoding: values["enable-geocoding"] === "on"
     };
     if(platform === "android"){
         opts.launchModeGoogleMaps = values["google-maps-launch-mode"];
