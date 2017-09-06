@@ -21,7 +21,9 @@ function navigate(e){
 
     launchnavigator.navigate(dest, {
         start: start,
-        enableDebug: true
+        enableDebug: true,
+        successCallback: onSuccess,
+        errorCallback: onError
     });
     return false;
 }
