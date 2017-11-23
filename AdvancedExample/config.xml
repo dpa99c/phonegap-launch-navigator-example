@@ -17,7 +17,10 @@
     </platform>
     <access origin="*" />
     <engine name="android" spec="latest" />
-    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="4" />
+    <engine name="ios" spec="^4.5.4" />
     <plugin name="cordova-plugin-device" spec="1" />
     <plugin name="cordova-plugin-dialogs" spec="1" />
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="file:///projects/phonegap-launch-navigator">
+        <variable name="LOCATION_USAGE_DESCRIPTION" value="This app requires access to your location for navigation purposes" />
+    </plugin>
 </widget>

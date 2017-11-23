@@ -4,18 +4,22 @@
   "displayName": "Launch Navigator Advanced Example",
   "cordova": {
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ],
     "plugins": {
-      "uk.co.workingedge.phonegap.plugin.launchnavigator": {},
       "cordova-plugin-device": {},
-      "cordova-plugin-dialogs": {}
+      "cordova-plugin-dialogs": {},
+      "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+        "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes"
+      }
     }
   },
   "dependencies": {
     "cordova-android": "latest",
-    "uk.co.workingedge.phonegap.plugin.launchnavigator": "4",
+    "cordova-ios": "^4.5.4",
     "cordova-plugin-device": "1",
-    "cordova-plugin-dialogs": "1"
+    "cordova-plugin-dialogs": "1",
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "file:///projects/phonegap-launch-navigator"
   }
 }
