@@ -1,0 +1,21 @@
+{
+  "name": "workingedge.example.launchnavigator.advanced",
+  "version": "4.0.0",
+  "displayName": "Launch Navigator Advanced Example",
+  "cordova": {
+    "platforms": [
+      "android"
+    ],
+    "plugins": {
+      "uk.co.workingedge.phonegap.plugin.launchnavigator": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-dialogs": {}
+    }
+  },
+  "dependencies": {
+    "cordova-android": "latest",
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "4",
+    "cordova-plugin-device": "1",
+    "cordova-plugin-dialogs": "1"
+  }
+}
