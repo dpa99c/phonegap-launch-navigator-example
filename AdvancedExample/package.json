@@ -5,21 +5,23 @@
   "cordova": {
     "platforms": [
       "android",
-      "ios"
+      "ios",
+      "windows"
     ],
     "plugins": {
       "cordova-plugin-device": {},
       "cordova-plugin-dialogs": {},
       "uk.co.workingedge.phonegap.plugin.launchnavigator": {
-        "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes"
+        "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes",
+        "OKHTTP_VERSION": "3.10.0"
       }
     }
   },
   "dependencies": {
     "cordova-android": "latest",
-    "cordova-ios": "^4.5.4",
+    "cordova-ios": "latest",
     "cordova-plugin-device": "1",
     "cordova-plugin-dialogs": "1",
-    "uk.co.workingedge.phonegap.plugin.launchnavigator": "file:///projects/phonegap-launch-navigator"
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "4"
   }
 }

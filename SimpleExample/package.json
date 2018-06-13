@@ -1,0 +1,19 @@
+{
+  "name": "workingedge.example.launchnavigator.simple",
+  "version": "4.0.0",
+  "displayName": "Launch Navigator Simple Example",
+  "cordova": {
+    "platforms": [
+      "android",
+      "ios",
+      "windows"
+    ],
+    "plugins": {
+      "uk.co.workingedge.phonegap.plugin.launchnavigator": {}
+    }
+  },
+  "dependencies": {
+    "cordova-android": "latest",
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "4"
+  }
+}
