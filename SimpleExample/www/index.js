@@ -11,8 +11,8 @@ function onError(errMsg){
 function navigate(e){
     e.preventDefault();
 
-    var dest = $('#dest input').val(),
-        start = $('#start input').val();
+    var dest = $('#dest input').val().trim(),
+        start = $('#start input').val().trim();
 
     if(!dest){
         navigator.notification. alert("A destination must be specified");
