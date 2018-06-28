@@ -12,6 +12,8 @@
     <preference name="fullscreen" value="false" />
     <preference name="orientation" value="default" />
     <preference name="permissions" value="none" />
+
+    <preference name="phonegap-version" value="cli-7.1.0" />
     
     <plugin name="cordova-plugin-dialogs" spec="1" />
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="4"/>
