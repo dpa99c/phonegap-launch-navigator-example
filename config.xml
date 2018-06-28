@@ -7,18 +7,28 @@
     <author email="dave@workingedge.co.uk" href="http://www.workingedge.co.uk/dave">
         Dave Alden
     </author>
+    <access origin="*" />
+
     <preference name="fullscreen" value="false" />
     <preference name="orientation" value="default" />
     <preference name="permissions" value="none" />
+    
+    <plugin name="cordova-plugin-dialogs" spec="1" />
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="4"/>
+
+	<engine name="windows" spec="latest" />
     <platform name="windows">
         <preference name="windows-target-version" value="10.0" />
         <preference name="target-device" value="universal" />
         <preference name="Windows.Universal-MinVersion" value="10.0.0.0" />
     </platform>
-    <plugin name="cordova-plugin-dialogs" spec="1" />
-    <access origin="*" />
-    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="4"/>
-    <engine name="android" spec="latest" />
+
+	<engine name="android" spec="latest" />
+    <platform name="android">
+    </platform>
+    
     <engine name="ios" spec="latest" />
-    <engine name="windows" spec="latest" />
+    <platform name="ios">
+    </platform>
+    
 </widget>
