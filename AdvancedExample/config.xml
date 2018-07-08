@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="workingedge.example.launchnavigator.advanced" version="4.0.0" xmlns="http://www.w3.org/ns/widgets">
+<widget id="workingedge.example.launchnavigator.advanced" version="5.0.0" xmlns="http://www.w3.org/ns/widgets">
     <name>Launch Navigator Advanced Example</name>
     <description>
         Sample application that illustrates advanced usage of the LaunchNavigator plugin

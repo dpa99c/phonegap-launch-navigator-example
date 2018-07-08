@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget xmlns="http://www.w3.org/ns/widgets"
         id="workingedge.example.launchnavigator.simple"
-        version="4.0.0">
+        version="5.0.0">
 
     <name>Launch Navigator Simple Example</name>
     <description>
@@ -22,7 +22,7 @@
     </platform>
 
     <plugin name="cordova-plugin-dialogs" spec="1"/>
-    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="4" />
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="5" />
 
 
     <access origin="*" />

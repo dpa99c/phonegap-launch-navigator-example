@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="launchnavigator.ionic2example" version="4.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="launchnavigator.ionic2example" version="5.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>LaunchNavigator Ionic 2 Example</name>
     <description>Sample application that illustrates usage of the LaunchNavigator plugin with Ionic 2 framework</description>
     <author email="dave@workingedge.co.uk" href="https://github.com/dpa99c">Dave Alden</author>
@@ -36,6 +36,6 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.0" />
     <plugin name="cordova-plugin-statusbar" spec="~2.2.0" />
     <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
-    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="4" />
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="5" />
     <engine name="android" spec="~6.1.2" />
 </widget>

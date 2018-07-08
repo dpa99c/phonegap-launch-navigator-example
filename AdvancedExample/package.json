@@ -1,6 +1,6 @@
 {
   "name": "workingedge.example.launchnavigator.advanced",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "displayName": "Launch Navigator Advanced Example",
   "cordova": {
     "platforms": [
