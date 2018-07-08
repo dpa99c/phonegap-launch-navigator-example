@@ -23,6 +23,7 @@ angular.module('starter', ['ionic'])
           StatusBar.styleDefault();
         }
       }catch(e){/*discard*/}
+      launchnavigator.enableDebug(true);
     });
   })
 
@@ -99,8 +100,7 @@ angular.module('starter', ['ionic'])
         dest = $scope.formData.dest == "custom" ? $scope.formData.custom_dest : $scope.formData.dest;
 
       $cordovaLaunchNavigator.navigate(dest, {
-        start: start,
-        enableDebug: true
+        start: start
       }).then(function () {
         alert("Navigator launched");
       }, function (err) {

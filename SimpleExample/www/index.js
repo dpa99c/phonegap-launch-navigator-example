@@ -21,7 +21,6 @@ function navigate(e){
 
     launchnavigator.navigate(dest, {
         start: start,
-        enableDebug: true,
         successCallback: onSuccess,
         errorCallback: onError
     });
@@ -30,6 +29,7 @@ function navigate(e){
 
 function init() {
     $('#form').submit(navigate);
+    launchnavigator.enableDebug(true);
 
 }
 $(document).on("deviceready", init);
