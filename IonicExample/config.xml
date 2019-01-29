@@ -2,7 +2,7 @@
 <widget
   id="workingedge.example.launchnavigator.ionic"
   ios-CFBundleIdentifier="uk.co.workingedge.example.launchnavigator.ionic"
-  version="4.0.0"
+  version="5.0.0"
   xmlns="http://www.w3.org/ns/widgets"
   xmlns:cdv="http://cordova.apache.org/ns/1.0">
 
@@ -28,7 +28,11 @@
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
 
-  <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="4" />
+  <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^5.0.0">
+    <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="your_api_key" />
+    <variable name="LOCATION_USAGE_DESCRIPTION" value="This app requires access to your location for navigation purposes" />
+    <variable name="OKHTTP_VERSION" value="3.10.0" />
+  </plugin>
 
 
   <platform name="android">

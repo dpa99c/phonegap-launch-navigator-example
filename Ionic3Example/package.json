@@ -1,6 +1,6 @@
 {
     "name": "launchnavigator.ionic3example",
-    "version": "4.0.0",
+    "version": "5.0.0",
     "author": "Dave Alden",
     "homepage": "https://github.com/dpa99c",
     "private": false,
@@ -26,8 +26,8 @@
         "@ionic-native/status-bar": "4.1.0",
         "@ionic/cli-plugin-cordova": "^1.4.0",
         "@ionic/storage": "2.0.1",
-        "cordova-android": "^6.2.3",
-        "cordova-ios": "^4.4.0",
+        "cordova-android": "*",
+        "cordova-ios": "*",
         "cordova-plugin-actionsheet": "^2.3.3",
         "cordova-plugin-console": "^1.0.7",
         "cordova-plugin-device": "^1.1.6",
@@ -39,7 +39,7 @@
         "ionicons": "3.0.0",
         "rxjs": "5.4.2",
         "sw-toolbox": "3.6.0",
-        "uk.co.workingedge.phonegap.plugin.launchnavigator": "4",
+        "uk.co.workingedge.phonegap.plugin.launchnavigator": "^5.0.0",
         "zone.js": "0.8.16"
     },
     "devDependencies": {
@@ -57,7 +57,11 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
-            "uk.co.workingedge.phonegap.plugin.launchnavigator": {}
+            "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+              "GOOGLE_API_KEY_FOR_ANDROID": "your_api_key",
+              "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes",
+              "OKHTTP_VERSION": "3.10.0"
+            }
         },
         "platforms": [
             "android",

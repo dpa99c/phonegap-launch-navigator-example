@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="workingedge.example.launchnavigator.advanced" version="4.0.0" xmlns="http://www.w3.org/ns/widgets">
+<widget id="workingedge.example.launchnavigator.advanced" version="5.0.0" xmlns="http://www.w3.org/ns/widgets">
     <name>Launch Navigator Advanced Example</name>
     <description>
         Sample application that illustrates advanced usage of the LaunchNavigator plugin
@@ -18,11 +18,12 @@
     <access origin="*" />
     <plugin name="cordova-plugin-device" spec="1" />
     <plugin name="cordova-plugin-dialogs" spec="1" />
-    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="4">
-        <variable name="LOCATION_USAGE_DESCRIPTION" value="This app requires access to your location for navigation purposes" />
-        <variable name="OKHTTP_VERSION" value="3.10.0" />
-    </plugin>
     <engine name="android" spec="latest" />
     <engine name="ios" spec="latest" />
     <engine name="windows" spec="latest" />
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^5.0.0">
+        <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="your_api_key" />
+        <variable name="LOCATION_USAGE_DESCRIPTION" value="This app requires access to your location for navigation purposes" />
+        <variable name="OKHTTP_VERSION" value="3.10.0" />
+    </plugin>
 </widget>

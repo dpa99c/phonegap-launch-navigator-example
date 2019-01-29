@@ -1,6 +1,6 @@
 {
   "name": "workingedge.example.launchnavigator.advanced",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "displayName": "Launch Navigator Advanced Example",
   "cordova": {
     "platforms": [
@@ -12,6 +12,7 @@
       "cordova-plugin-device": {},
       "cordova-plugin-dialogs": {},
       "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+        "GOOGLE_API_KEY_FOR_ANDROID": "your_api_key",
         "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes",
         "OKHTTP_VERSION": "3.10.0"
       }
@@ -22,6 +23,6 @@
     "cordova-ios": "latest",
     "cordova-plugin-device": "1",
     "cordova-plugin-dialogs": "1",
-    "uk.co.workingedge.phonegap.plugin.launchnavigator": "4"
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "^5.0.0"
   }
 }
