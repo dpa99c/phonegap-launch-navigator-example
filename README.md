@@ -33,6 +33,7 @@ The repo contains the following example projects in sub-directories:
 - IonicExample - a basic example using Ionic 1 framework / Angular 1
 - Ionic2Example - a basic example using Ionic 2 framework / Angular 2
 - Ionic3Example - a basic example using Ionic 3 framework / Angular 4
+- Ionic4Example - a basic example using Ionic 4 framework / Angular 7
 
 # Building and running
 
