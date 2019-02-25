@@ -21,7 +21,6 @@ function navigate(e){
 
     launchnavigator.navigate(dest, {
         start: start,
-        enableDebug: true,
         successCallback: onSuccess,
         errorCallback: onError
     });
@@ -29,6 +28,12 @@ function navigate(e){
 }
 
 function init() {
+    launchnavigator.enableDebug(true, function(){
+        console.log("Debug mode enabled");
+    }, function(error){
+        console.error("Error enabling debug mode: "+error);
+    });
+
     $('#form').submit(navigate);
 
 }
