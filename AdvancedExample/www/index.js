@@ -139,8 +139,6 @@ function navigate(){
                 enabled: values["should-remember-choice"]
             }
         },
-
-        enableDebug: true,
         enableGeocoding: values["enable-geocoding"] === "on"
     };
     if(platform === "android"){
@@ -157,6 +155,12 @@ function init() {
     $(document).on("resume", updateUI);
 
     ln = launchnavigator;
+    ln.enableDebug(true, function(){
+        console.log("Debug mode enabled");
+    }, function(error){
+       console.error("Error enabling debug mode: "+error);
+    });
+
     platform = device.platform.toLowerCase();
     if(platform == "android"){
         platform = ln.PLATFORM.ANDROID;

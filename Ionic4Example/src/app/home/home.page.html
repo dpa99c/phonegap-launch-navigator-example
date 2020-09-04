@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>LaunchNavigator Ionic 4 Example</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Destination</ion-label>
+      <ion-select [(ngModel)]="destination">
+        <ion-select-option value="Westminster, London, UK">Westminster, London, UK</ion-select-option>
+        <ion-select-option value="51.498739, -0.133827">51.49,-0.13 (Westminster)</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Start</ion-label>
+      <ion-select [(ngModel)]="start">
+        <ion-select-option value="">None (current location)</ion-select-option>
+        <ion-select-option value="Manchester, UK">Manchester, UK</ion-select-option>
+        <ion-select-option value="53.493002,-2.240080">53.49,-2.24 (Manchester)</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="navigate()">Navigate</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
