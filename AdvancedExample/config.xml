@@ -16,14 +16,4 @@
         <preference name="Windows.Universal-MinVersion" value="10.0.0.0" />
     </platform>
     <access origin="*" />
-    <plugin name="cordova-plugin-device" spec="1" />
-    <plugin name="cordova-plugin-dialogs" spec="1" />
-    <engine name="android" spec="latest" />
-    <engine name="ios" spec="latest" />
-    <engine name="windows" spec="latest" />
-    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^5.0.0">
-        <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="your_api_key" />
-        <variable name="LOCATION_USAGE_DESCRIPTION" value="This app requires access to your location for navigation purposes" />
-        <variable name="OKHTTP_VERSION" value="3.10.0" />
-    </plugin>
 </widget>

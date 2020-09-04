@@ -13,16 +13,17 @@
       "cordova-plugin-dialogs": {},
       "uk.co.workingedge.phonegap.plugin.launchnavigator": {
         "GOOGLE_API_KEY_FOR_ANDROID": "your_api_key",
-        "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes",
-        "OKHTTP_VERSION": "3.10.0"
+        "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes"
       }
     }
   },
   "dependencies": {
-    "cordova-android": "latest",
-    "cordova-ios": "latest",
+    "cordova-android": "8.1.0",
+    "cordova-ios": "6.1.1",
     "cordova-plugin-device": "1",
-    "cordova-plugin-dialogs": "1",
-    "uk.co.workingedge.phonegap.plugin.launchnavigator": "^5.0.0"
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "^5.0.4"
+  },
+  "devDependencies": {
+    "cordova-plugin-dialogs": "1"
   }
 }
