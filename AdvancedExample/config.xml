@@ -10,6 +10,9 @@
     <preference name="fullscreen" value="false" />
     <preference name="orientation" value="default" />
     <preference name="permissions" value="none" />
+    <platform name="android">
+        <preference name="android-targetSdkVersion" value="30" />
+    </platform>
     <platform name="windows">
         <preference name="windows-target-version" value="10.0" />
         <preference name="target-device" value="universal" />
