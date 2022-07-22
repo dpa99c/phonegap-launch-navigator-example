@@ -25,6 +25,6 @@
     "uk.co.workingedge.phonegap.plugin.launchnavigator": "^5.0.0"
   },
   "devDependencies": {
-    "cordova-android": "^9.1.0"
+    "cordova-android": "^11.0.0"
   }
 }

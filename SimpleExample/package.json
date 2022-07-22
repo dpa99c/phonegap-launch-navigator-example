@@ -17,11 +17,11 @@
     }
   },
   "dependencies": {
-    "cordova-android": "8.1.0",
     "cordova-ios": "6.1.1",
     "uk.co.workingedge.phonegap.plugin.launchnavigator": "^5.0.4"
   },
   "devDependencies": {
+    "cordova-android": "^11.0.0",
     "cordova-plugin-dialogs": "1"
   }
 }

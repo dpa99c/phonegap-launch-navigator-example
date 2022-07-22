@@ -7,16 +7,16 @@
     <author email="dave@workingedge.co.uk" href="http://www.workingedge.co.uk/dave">
         Dave Alden
     </author>
-    <preference name="fullscreen" value="false" />
-    <preference name="orientation" value="default" />
-    <preference name="permissions" value="none" />
+
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+
     <platform name="android">
-        <preference name="android-targetSdkVersion" value="30" />
+        <!-- Build with SDK: Android 12 -->
+        <preference name="android-targetSdkVersion" value="32" />
     </platform>
-    <platform name="windows">
-        <preference name="windows-target-version" value="10.0" />
-        <preference name="target-device" value="universal" />
-        <preference name="Windows.Universal-MinVersion" value="10.0.0.0" />
+    <platform name="ios">
     </platform>
-    <access origin="*" />
+
 </widget>
