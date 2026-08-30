@@ -5,8 +5,7 @@
   "cordova": {
     "platforms": [
       "android",
-      "ios",
-      "windows"
+      "ios"
     ],
     "plugins": {
       "cordova-plugin-device": {},
@@ -19,12 +18,13 @@
     }
   },
   "dependencies": {
-    "cordova-ios": "latest",
     "cordova-plugin-device": "1",
     "cordova-plugin-dialogs": "1",
     "uk.co.workingedge.phonegap.plugin.launchnavigator": "^5.0.0"
   },
   "devDependencies": {
-    "cordova-android": "^11.0.0"
+    "cordova-android": "^15.1.0",
+    "cordova-ios": "^8.1.1",
+    "cordova-plugin-actionsheet": "^2.3.3"
   }
 }

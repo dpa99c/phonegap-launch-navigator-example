@@ -13,8 +13,6 @@
     <allow-intent href="https://*/*" />
 
     <platform name="android">
-        <!-- Build with SDK: Android 12 -->
-        <preference name="android-targetSdkVersion" value="32" />
     </platform>
     <platform name="ios">
     </platform>

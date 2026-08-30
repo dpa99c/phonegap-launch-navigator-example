@@ -5,23 +5,24 @@
   "cordova": {
     "platforms": [
       "android",
-      "ios",
-      "windows"
+      "ios"
     ],
     "plugins": {
       "uk.co.workingedge.phonegap.plugin.launchnavigator": {
         "GOOGLE_API_KEY_FOR_ANDROID": "your_api_key",
-        "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes"
+        "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes",
+        "OKHTTP_VERSION": "3.12.0"
       },
       "cordova-plugin-dialogs": {}
     }
   },
   "dependencies": {
-    "cordova-ios": "6.1.1",
     "uk.co.workingedge.phonegap.plugin.launchnavigator": "^5.0.4"
   },
   "devDependencies": {
-    "cordova-android": "^11.0.0",
+    "cordova-android": "^15.1.0",
+    "cordova-ios": "^8.1.1",
+    "cordova-plugin-actionsheet": "^2.3.3",
     "cordova-plugin-dialogs": "1"
   }
 }
